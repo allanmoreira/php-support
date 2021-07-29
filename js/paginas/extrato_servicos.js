@@ -1,5 +1,4 @@
 var mensagem = $('#mensagem');
-var btn_executar = $('#btn_executar');
 var data_inicio = $('#data_inicio');
 var data_fim = $('#data_fim');
 var ec = $('#ec');
@@ -65,7 +64,7 @@ function consulta() {
 
 
     $.ajax({
-        url: URL.EXTRATOS.LOCAL + '/api/v2/estabelecimento/'+ec.val()+'/extratos/servicos',
+        url: URL.EXTRATOS.HTI + '/api/v2/estabelecimento/'+ec.val()+'/extratos/servicos',
         async: true,
         type: 'GET',
         dataType: 'json',
@@ -101,7 +100,11 @@ function consulta() {
             }
         },
         error: function (response) {
-            abreNotificacao('danger', 'ERRO');
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
         }
     });
 

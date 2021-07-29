@@ -1,14 +1,6 @@
 var claimId = $('#claimId');
 var token = $('#token');
 var arquivo = $('#arquivo');
-/*
-
-$(document).ajaxStart(function(){
-    $('#loader').css('display', 'block');
-}).ajaxStop(function(){
-    $('#loader').css('display', 'none');
-});
-*/
 
 $(function (){
     executa()

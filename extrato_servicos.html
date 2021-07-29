@@ -19,96 +19,95 @@
         <![endif]-->
     </head>
     <body>
+        <div id="loader" style="display: none" class="loader"></div>
 
-    <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
-        <div class="col-lg-4">
-            <input id="data_inicio" class="form-control" placeholder="data_inicio"><br>
-            <input id="data_fim" class="form-control" placeholder="data_fim"><br>
-            <input id="ec" class="form-control" placeholder="ec"><br>
-            <br>
-            <button class="btn btn-primary" id="btn_executar">Executar</button>
-            <button class="btn btn-success" id="btn_atualizar_token">Atualizar token</button>
+        <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
+            <div class="col-lg-4">
+                <input id="data_inicio" class="form-control" placeholder="data_inicio"><br>
+                <input id="data_fim" class="form-control" placeholder="data_fim"><br>
+                <input id="ec" class="form-control" placeholder="ec"><br>
+                <br>
+                <button class="btn btn-primary" id="btn_executar">Executar</button>
+                <button class="btn btn-success" id="btn_atualizar_token">Atualizar token</button>
+            </div>
         </div>
-    </div>
-    <br>
-    <div style="margin-left: 10px">
-        <h2 id="mensagem">Mensagem:</h2>
-    </div>
+        <br>
+        <div style="margin-left: 10px">
+            <h2 id="mensagem">Mensagem:</h2>
+        </div>
 
-    <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
-        <h2>Resumo Novo</h2>
-        <table id="tabela_resumo_novo" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th class="text-center">Produto</th>
-                <th class="text-center">Valor Cobrado</th>
-                <th class="text-center">Desconto</th>
-                <th class="text-center">Valor Pago</th>
-                <th class="text-center">Valor Pendente</th>
-            </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-
-    <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
-        <h2>Resumo Atual</h2>
-        <table id="tabela_resumo" class="table table-bordered table-striped">
-            <thead>
+        <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
+            <h2>Resumo Novo</h2>
+            <table id="tabela_resumo_novo" class="table table-bordered table-striped">
+                <thead>
                 <tr>
-                    <th class="text-center">Tipo</th>
-                    <th class="text-center">Tipo Desconto</th>
                     <th class="text-center">Produto</th>
                     <th class="text-center">Valor Cobrado</th>
                     <th class="text-center">Desconto</th>
                     <th class="text-center">Valor Pago</th>
                     <th class="text-center">Valor Pendente</th>
-                    <th class="text-center">Data Compensação</th>
-                    <th class="text-center">Status</th>
                 </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
 
-    <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
-        <h2>Detalhes do Período</h2>
-        <table id="tabela_detalhes" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th class="text-center">Tipo</th>
-                    <th class="text-center">Tipo Desconto</th>
-                    <th class="text-center">Produto</th>
-                    <th class="text-center">N° Documento</th>
-                    <th class="text-center">Data Vencimento</th>
-                    <th class="text-center">Data Compensação</th>
-                    <th class="text-center">Valor Total</th>
-                    <th class="text-center">Valor Desconto</th>
-                    <th class="text-center">Valor Pago</th>
-                    <th class="text-center">Valor Pendente</th>
-                    <th class="text-center">Status</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
+        <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
+            <h2>Resumo Atual</h2>
+            <table id="tabela_resumo" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">Tipo</th>
+                        <th class="text-center">Tipo Desconto</th>
+                        <th class="text-center">Produto</th>
+                        <th class="text-center">Valor Cobrado</th>
+                        <th class="text-center">Desconto</th>
+                        <th class="text-center">Valor Pago</th>
+                        <th class="text-center">Valor Pendente</th>
+                        <th class="text-center">Data Compensação</th>
+                        <th class="text-center">Status</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
 
-    <div id="loader" style="display: none" class="loader"></div>
+        <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
+            <h2>Detalhes do Período</h2>
+            <table id="tabela_detalhes" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">Tipo</th>
+                        <th class="text-center">Tipo Desconto</th>
+                        <th class="text-center">Produto</th>
+                        <th class="text-center">N° Documento</th>
+                        <th class="text-center">Data Vencimento</th>
+                        <th class="text-center">Data Compensação</th>
+                        <th class="text-center">Valor Total</th>
+                        <th class="text-center">Valor Desconto</th>
+                        <th class="text-center">Valor Pago</th>
+                        <th class="text-center">Valor Pendente</th>
+                        <th class="text-center">Status</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.mask.min.js"></script>
-    <script src="js/jquery.maskMoney.min.js"></script>
-    <script src="js/plugins/js.cookie.min.js"></script>
-    <script src="js/plugins/bootstrap-notify.js"></script>
-    <script src="js/plugins/urls_portal.js"></script>
-    <script src="js/plugins/token.js"></script>
-    <script src="js/plugins/notificacao.js"></script>
-    <script src="js/plugins/aguardar_carregamento_ajax.js"></script>
-    <script src="js/plugins/funcoes_gerais.js"></script>
-    <script src="js/paginas/extrato_servicos.js"></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.mask.min.js"></script>
+        <script src="js/jquery.maskMoney.min.js"></script>
+        <script src="js/plugins/js.cookie.min.js"></script>
+        <script src="js/plugins/bootstrap-notify.js"></script>
+        <script src="js/plugins/urls_portal.js"></script>
+        <script src="js/plugins/token.js"></script>
+        <script src="js/plugins/notificacao.js"></script>
+        <script src="js/plugins/aguardar_carregamento_ajax.js"></script>
+        <script src="js/plugins/funcoes_gerais.js"></script>
+        <script src="js/paginas/extrato_servicos.js"></script>
 
     </body>
 </html>
