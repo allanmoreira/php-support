@@ -1,11 +1,13 @@
 var mensagem = $('#mensagem');
 
 var valor = $('#valor');
+var cartao = $('#cartao');
 var ec = $('#ec');
-var tabela = $('#tabela tbody');
+var tabela = $('#tabela');
 
 $(function(){
     ec.val('51161828');
+    cartao.val('154');
     valor.val('2505');
 });
 
@@ -29,21 +31,14 @@ function consulta() {
             xhr.setRequestHeader("authorization", 'bearer ' + getToken());
         },
         data: {
-            valor : valor.val()
+            valor : valor.val(),
+            cartao: cartao.val()
         },
         success: function (response) {
             abreNotificacao('success', 'Consulta realizada com sucesso!');
+            $('#tabela thead > tr').remove();
             $('#tabela tbody > tr').remove();
-            mensagem.html('Mensagem: ' + response.status.description);
-            if(response.data !== undefined && response.data.resumo !== undefined) {
-                if(response.data.msgRetorno !== undefined)
-                    mensagem.html('Mensagem: <span style="color: red" id="mensagem">'+response.data.msgRetorno+'</span>');
-
-                var lista = response.data.totalizadores.totalizadoresPorTipo;
-                $.each(lista, function (i) {
-                    preencheTabela(lista[i]);
-                });
-            }
+            preencheTabela(response.data.tecnologias);
         },
         error: function (response) {
             if(response.status === 401){
@@ -56,14 +51,26 @@ function consulta() {
 
 }
 
-function preencheTabela(item){
-    $('#tabela_resumo_novo tbody').append(
-        '<tr>' +
-            '<td class="text-center">'+item.descricao+'</td>' +
-            '<td class="text-center">'+converteFloatParaMoeda(item.valorTotal)+'</td>' +
-            '<td class="text-center">'+converteFloatParaMoeda(item.valorDesconto)+'</td>' +
-            '<td class="text-center">'+converteFloatParaMoeda(item.valorPago)+'</td>' +
-            '<td class="text-center">'+converteFloatParaMoeda(item.valorPendente)+'</td>' +
-        '</tr>'
-    );
+function preencheTabela(tecnologias){
+    var header = '<tr><th></th>';
+    $.each(tecnologias, function (i) {
+        header += '<th class="text-center">'+tecnologias[i].chaveTecnologia.toUpperCase()+'</th>';
+    });
+    header += '</tr>';
+    $('#tabela thead').append(header);
+
+    var html = '';
+    for (let j = 0; j < 14; j++) {
+        html += '<tr>';
+        var linha_adicionada = false;
+        $.each(tecnologias, function (i) {
+            if(!linha_adicionada){
+                html += '<td class="text-center" style="width: 10%"><strong>' + tecnologias[i].bandeiras[0].taxas[j].modalidade + '</strong></td>';
+                linha_adicionada = true;
+            }
+            html += '<td class="text-center">' + tecnologias[i].bandeiras[0].taxas[j].valorReceber + '</td>';
+        });
+        html += '<tr>';
+    }
+    $('#tabela tbody').append(html);
 }
