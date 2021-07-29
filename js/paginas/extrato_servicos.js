@@ -88,12 +88,12 @@ function consulta() {
                 if(response.data.msgRetorno !== undefined)
                     mensagem.html('Mensagem: <span style="color: red" id="mensagem">'+response.data.msgRetorno+'</span>');
 
-                var totalizador = response.data.totalizadores.totalizadoresPorTipo;
-                for (var descricao in totalizador){
-                    preencheTabelaResumonovo(descricao, totalizador[descricao]);
-                }
+                var lista = response.data.totalizadores.totalizadoresPorTipo;
+                $.each(lista, function (i) {
+                    preencheTabelaResumonovo(lista[i]);
+                });
 
-                var lista = response.data.resumo;
+                lista = response.data.resumo;
                 $.each(lista, function (i) {
                     preencheTabelaResumo(lista[i]);
                     preencheTabelaDetalhes(i, lista[i]);
@@ -107,14 +107,14 @@ function consulta() {
 
 }
 
-function preencheTabelaResumonovo(descricao, totalizador){
+function preencheTabelaResumonovo(item){
     $('#tabela_resumo_novo tbody').append(
         '<tr>' +
-            '<td class="text-center">'+descricao+'</td>' +
-            '<td class="text-center">'+converteFloatParaMoeda(totalizador.valorTotal)+'</td>' +
-            '<td class="text-center">'+converteFloatParaMoeda(totalizador.valorDesconto)+'</td>' +
-            '<td class="text-center">'+converteFloatParaMoeda(totalizador.valorPago)+'</td>' +
-            '<td class="text-center">'+converteFloatParaMoeda(totalizador.valorPendente)+'</td>' +
+            '<td class="text-center">'+item.descricao+'</td>' +
+            '<td class="text-center">'+converteFloatParaMoeda(item.valorTotal)+'</td>' +
+            '<td class="text-center">'+converteFloatParaMoeda(item.valorDesconto)+'</td>' +
+            '<td class="text-center">'+converteFloatParaMoeda(item.valorPago)+'</td>' +
+            '<td class="text-center">'+converteFloatParaMoeda(item.valorPendente)+'</td>' +
         '</tr>'
     );
 }
