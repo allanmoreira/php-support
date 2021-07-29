@@ -1,8 +1,10 @@
 var btn_atualizar_token = $('#btn_atualizar_token');
 var btn_executar = $('#btn_executar');
 
+var LOCAL_STORAGE_TOKEN = 'TOKEN';
+
 btn_atualizar_token.click(function(){
-    token();
+    gerarToken();
 });
 
 var data_token = {
@@ -22,7 +24,7 @@ var data_token = {
     }
 }
 
-function token(token_origin, token_type) {
+function gerarToken(token_origin, token_type) {
     var url = URL.KEYCLOACK.NOVO + '/auth/realms/external/protocol/openid-connect/token';
     if(token_origin === TOKEN_ORIGIN.OLD)
         url = URL.KEYCLOACK.OLD + '/auth/realms/external/protocol/openid-connect/token';
@@ -41,12 +43,15 @@ function token(token_origin, token_type) {
             }
         },
         success: function (response) {
-            TOKEN = response.access_token;
-            REFRESH_TOKEN = response.refresh_token;
+            localStorage.setItem(LOCAL_STORAGE_TOKEN, response.access_token);
             abreNotificacao('success', 'Token gerado com sucesso!');
         },
         error: function (response) {
             abreNotificacao('danger', 'ERRO');
         }
     });
+}
+
+function getToken(){
+    return localStorage.getItem(LOCAL_STORAGE_TOKEN);
 }

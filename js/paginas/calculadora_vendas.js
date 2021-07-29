@@ -26,7 +26,7 @@ function consulta() {
         type: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("authorization", 'bearer ' + TOKEN);
+            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
         },
         data: {
             valor : valor.val()

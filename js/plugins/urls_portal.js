@@ -1,5 +1,4 @@
 var TOKEN;
-var REFRESH_TOKEN;
 var LOGIN = '04493259035';
 var SENHA = 'getnet@123';
 // var LOGIN = '02111023000';
