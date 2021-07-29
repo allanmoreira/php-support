@@ -34,7 +34,7 @@ function consulta() {
         success: function (response) {
             abreNotificacao('success', 'Consulta realizada com sucesso!');
             $('#tabela tbody > tr').remove();
-            mensagem.html('Mensagem: ');
+            mensagem.html('Mensagem: ' + response.status.description);
             if(response.data !== undefined && response.data.resumo !== undefined) {
                 if(response.data.msgRetorno !== undefined)
                     mensagem.html('Mensagem: <span style="color: red" id="mensagem">'+response.data.msgRetorno+'</span>');
