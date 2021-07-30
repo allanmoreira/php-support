@@ -6,9 +6,10 @@ var ec = $('#ec');
 var tabela = $('#tabela');
 
 $(function(){
+    valor.maskMoney();
     ec.val('51161828');
     cartao.val('154');
-    valor.val('2505');
+    valor.val(converteFloatParaMoeda('2505'));
 });
 
 $('.form-control').keydown(function (e){
@@ -31,7 +32,7 @@ function consulta() {
             xhr.setRequestHeader("authorization", 'bearer ' + getToken());
         },
         data: {
-            valor : valor.val(),
+            valor : converteMoedaParaFloat(valor.val(), 2),
             cartao: cartao.val()
         },
         success: function (response) {
@@ -113,7 +114,7 @@ function preencheTabela(tecnologias, lista_taxas){
             html += '<tr>' +
                 '<td class="text-center" style="width: 200px"><strong>' + item_taxa_modalidade.modalidade + '</strong></td>';
             item_taxa_modalidade.taxas.forEach(function (taxa) {
-                html += '<td class="text-center">' + taxa + '</td>';
+                html += '<td class="text-center">' + converteFloatParaMoeda(taxa, 2) + '</td>';
             });
             html += '<tr>';
         }
