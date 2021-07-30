@@ -111,10 +111,13 @@ function preencheTabela(tecnologias, lista_taxas){
     var html = '';
     lista_taxas.forEach(function (item_taxa_modalidade){
         if(item_taxa_modalidade.taxas.length !== 0) {
+            var cor_celula = '';
+            if(item_taxa_modalidade.modalidade === 'Parcelado 10x')
+                cor_celula = ';background-color: yellow';
             html += '<tr>' +
-                '<td class="text-center" style="width: 200px"><strong>' + item_taxa_modalidade.modalidade + '</strong></td>';
+                '<td class="text-center" style="width: 200px '+cor_celula+'"><strong>' + item_taxa_modalidade.modalidade + '</strong></td>';
             item_taxa_modalidade.taxas.forEach(function (taxa) {
-                html += '<td class="text-center">' + converteFloatParaMoeda(taxa, 2) + '</td>';
+                html += '<td class="text-center" style="'+cor_celula+'">' + converteFloatParaMoeda(taxa, 2) + '</td>';
             });
             html += '<tr>';
         }
