@@ -32,6 +32,10 @@ var URL  = {
     PRODUTOS : {
         LOCAL : HOST_LOCAL + '8022',
         HTI : HOST_HTI + '/services/mc-produtos'
+    },
+    CADASTRO : {
+        LOCAL : HOST_LOCAL + '8016',
+        HTI : HOST_HTI + '/services/mc-cadastro'
     }
 
 };
