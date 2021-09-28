@@ -5,6 +5,7 @@ var username = $('#username');
 var tabela = $('#tabela');
 
 $(function(){
+    getAmbiente();
     ec.val('338869');
     username.val('02823842004');
 });
@@ -18,7 +19,7 @@ $('.form-control').keydown(function (e){
 btn_executar.click(function(){
     // var url = URL.CADASTRO.LOCAL + '/api/v1/vinculos/'+username.val()+'?codEc='+ec.val();
     // var method = 'POST';
-    var url = URL.CADASTRO.LOCAL + '/public/api/v1/usuario/'+username.val();
+    var url = URL.CADASTRO[ambiente.val()] + '/public/api/v1/usuario/'+username.val();
     var method = 'GET';
     $('#tabela tbody > tr').remove();
     var cont = 1;

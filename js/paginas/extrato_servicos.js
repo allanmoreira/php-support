@@ -5,6 +5,7 @@ var ec = $('#ec');
 var tabela_detalhes_tbody = $('#tabela_detalhes tbody');
 
 $(function(){
+    getAmbiente();
     // data_inicio.val('2019-01-01T00:00:00.000-0300');
     // data_fim.val('2020-09-01T00:00:00.000-0300');
 
@@ -64,7 +65,7 @@ function consulta() {
 
 
     $.ajax({
-        url: URL.EXTRATOS.HTI + '/api/v2/estabelecimento/'+ec.val()+'/extratos/servicos',
+        url: URL.EXTRATOS[ambiente.val()] + '/api/v2/estabelecimento/'+ec.val()+'/extratos/servicos',
         async: true,
         type: 'GET',
         dataType: 'json',

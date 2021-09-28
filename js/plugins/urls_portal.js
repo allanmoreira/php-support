@@ -1,3 +1,5 @@
+var ambiente = $('#ambiente');
+var LOCAL_STORAGE_AMBIENTE = 'AMBIENTE';
 var TOKEN;
 var LOGIN = '04493259035';
 var SENHA = 'getnet@123';
@@ -5,6 +7,14 @@ var SENHA = 'getnet@123';
 // var SENHA = 'getnet@123';
 // var LOGIN = 'am23000';
 // var SENHA = 'macaquinho.3';
+
+ambiente.change(function(){
+    localStorage.setItem(LOCAL_STORAGE_AMBIENTE, this.value);
+});
+
+function getAmbiente(){
+    ambiente.val(localStorage.getItem(LOCAL_STORAGE_AMBIENTE));
+}
 
 var TOKEN_ORIGIN = {
     NOVO : 'NOVO',

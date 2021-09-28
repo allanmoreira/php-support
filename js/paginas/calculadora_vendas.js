@@ -6,6 +6,7 @@ var ec = $('#ec');
 var tabela = $('#tabela');
 
 $(function(){
+    getAmbiente();
     valor.maskMoney();
     ec.val('51161828');
     cartao.val('154');
@@ -24,7 +25,7 @@ btn_executar.click(function(){
 
 function consulta() {
     $.ajax({
-        url: URL.PRODUTOS.LOCAL + '/api/v1/estabelecimento/'+ec.val()+'/simulador',
+        url: URL.PRODUTOS[ambiente.val()] + '/api/v1/estabelecimento/'+ec.val()+'/simulador',
         async: true,
         type: 'GET',
         dataType: 'json',
