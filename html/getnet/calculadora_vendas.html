@@ -8,8 +8,8 @@
         <title>Calculadora Vendas</title>
 
         <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/layout.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/layout.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,6 +19,21 @@
         <![endif]-->
     </head>
     <body>
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../index.html">Calculadora Vendas</a>
+                </div>
+            </div>
+        </nav>
+
         <div id="loader" style="display: none" class="loader"></div>
 
         <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
@@ -35,7 +50,8 @@
                 <label>Cartão</label>
                 <input id="cartao" class="form-control" placeholder="cartao"><br>
                 <label>Valor</label>
-                <input id="valor" class="form-control" placeholder="valor" data-thousands="." data-decimal="," data-prefix="R$ "><br>
+                <input id="valor" class="form-control" placeholder="valor" data-thousands="." data-decimal=","
+                       data-prefix="R$ "><br>
                 <br>
                 <button class="btn btn-primary" id="btn_executar">Executar</button>
                 <button class="btn btn-success" id="btn_atualizar_token">Atualizar token</button>
@@ -55,19 +71,19 @@
         </div>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="js/jquery.min.js"></script>
+        <script src="../../js/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.mask.min.js"></script>
-        <script src="js/jquery.maskMoney.min.js"></script>
-        <script src="js/plugins/js.cookie.min.js"></script>
-        <script src="js/plugins/bootstrap-notify.js"></script>
-        <script src="js/plugins/urls_portal.js"></script>
-        <script src="js/plugins/token.js"></script>
-        <script src="js/plugins/notificacao.js"></script>
-        <script src="js/plugins/aguardar_carregamento_ajax.js"></script>
-        <script src="js/plugins/funcoes_gerais.js"></script>
-        <script src="js/paginas/calculadora_vendas.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.mask.min.js"></script>
+        <script src="../../js/jquery.maskMoney.min.js"></script>
+        <script src="../../js/plugins/js.cookie.min.js"></script>
+        <script src="../../js/plugins/bootstrap-notify.js"></script>
+        <script src="../../js/plugins/urls_portal.js"></script>
+        <script src="../../js/plugins/token.js"></script>
+        <script src="../../js/plugins/notificacao.js"></script>
+        <script src="../../js/plugins/aguardar_carregamento_ajax.js"></script>
+        <script src="../../js/plugins/funcoes_gerais.js"></script>
+        <script src="../../js/paginas/calculadora_vendas.js"></script>
 
     </body>
 </html>
