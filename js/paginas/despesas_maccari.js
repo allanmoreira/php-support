@@ -1,11 +1,16 @@
 var ano_atual;
-
+var dividir_por_ano = $('#dividir_por_ano');
 
 $(function(){
     consulta();
 });
 
+dividir_por_ano.change(function (){
+    consulta();
+});
+
 function consulta() {
+    $('#tabela tbody > tr').remove();
     var lista_dados = getDados();
     $.each(lista_dados, function (i) {
         var despesa = lista_dados[i];
@@ -17,7 +22,7 @@ function preencheTabela(despesa){
     var data_despesa = dataSqlParaString(despesa.paymentDate);
     var tabela = $('#tabela tbody');
     var ano_despesa = getAno(data_despesa);
-    if(ano_atual !== ano_despesa) {
+    if(dividir_por_ano.val() === 'true' && ano_atual !== ano_despesa) {
         ano_atual = ano_despesa;
         tabela.append(
             '<tr>' +
@@ -4251,5 +4256,5 @@ function getAno(data){
 }
 
 function getValor(valor){
-    return converteFloatParaMoeda(-valor)
+    return converteFloatParaMoeda(-valor, 2);
 }
