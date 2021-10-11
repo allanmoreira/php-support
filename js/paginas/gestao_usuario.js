@@ -9,6 +9,7 @@ var nome = $('#nome');
 var novo_email = $('#novo_email');
 var email_atual = $('#email_atual');
 var email_solicitacao = $('#email_solicitacao');
+var data_solicitacao = $('#data_solicitacao');
 
 $(function(){
     getConfigs();
@@ -49,6 +50,7 @@ function consultarUsuario(){
             var emailAtual = usuario.email;
             var novoEmail = usuario.solicitacaoEmail.emailNew;
             email_atual.val(emailAtual);
+            data_solicitacao.val(converteTimestampParaString(usuario.solicitacaoEmail.dataCriacao));
             email_solicitacao.val(novoEmail);
             if(emailAtual !== novoEmail)
                 email_solicitacao.css('background-color', '#efef6f');

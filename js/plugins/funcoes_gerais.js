@@ -10,6 +10,11 @@ function dataAtual(){
     return converteDataParaString(new Date());
 }
 
+function converteDataParaStringComDivisor(data, divisor) {
+    var split = data.split(divisor);
+    return split[2] + '/' + split[1] + '/' + split[0];
+}
+
 function converteDataParaString(data) {
     var mesAtual = data.getMonth()+1;
     var dia = data.getDate();
@@ -252,5 +257,11 @@ function mostraParcela(parcela_atual, qtde_parcelas){
     if(qtde_parcelas < 10)
         qtde_parcelas = '0'+qtde_parcelas;
     return ' (' + parcela_atual + '/' + qtde_parcelas + ')';
+}
+
+function converteTimestampParaString(data){
+    var split = data.split('T');
+    var data = converteDataParaStringComDivisor(split[0], '-');
+    return data + ' ' + split[1].substring(0,12);
 }
 
