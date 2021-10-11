@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Gestão Usuários</title>
+
+        <!-- Bootstrap -->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/layout.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../index.html">Gestão Usuários</a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="loader" style="display: none" class="loader"></div>
+
+        <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
+            <div class="col-lg-6">
+                <h4>Token</h4>
+                <label>Auth</label>
+                <select id="auth" class="form-control">
+                    <option value="AUTH">Auth</option>
+                    <option value="ATENDIMENTO">Atendimento</option>
+                    <option value="INTERNO">Interno</option>
+                </select>
+
+                <label>Ambiente Token</label>
+                <select id="ambiente_token" class="form-control">
+                    <option value="NEW">New</option>
+                    <option value="OLD">Old</option>
+                </select>
+
+                <label>Ambiente</label>
+                <select id="ambiente" class="form-control">
+                    <option value="LOCAL">Local</option>
+                    <option value="HTI">HTI</option>
+                    <option value="HK">HK</option>
+                    <option value="PROD">Produção</option>
+                </select>
+
+                <br>
+                <button class="btn btn-success" id="btn_atualizar_token">Atualizar token</button>
+            </div>
+
+            <div class="col-lg-6">
+                <h4>Endpoint</h4>
+                <label>Usuário</label>
+                <input id="usuario" class="form-control" placeholder="usuário">
+                <br>
+                <button class="btn btn-primary" id="btn_executar">Executar</button>
+            </div>
+        </div>
+
+        <div style="margin-left: 10px">
+            <h3>Mensagem: <span id="mensagem"></span></h3>
+        </div>
+
+        <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
+            <h2>Retorno</h2>
+            <div class="col-lg-4">
+                <label>Usuário</label>
+                <input id="nome" class="form-control disabled" disabled>
+            </div>
+            <div class="col-lg-4">
+                <label>Email Atual</label>
+                <input id="email_atual" class="form-control disabled" disabled>
+            </div>
+            <div class="col-lg-4">
+                <label>Email Solicitação</label>
+                <input id="email_solicitacao" class="form-control disabled" disabled>
+            </div>
+            <table id="tabela" class="table table-bordered table-striped">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="../../js/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.mask.min.js"></script>
+        <script src="../../js/jquery.maskMoney.min.js"></script>
+        <script src="../../js/plugins/js.cookie.min.js"></script>
+        <script src="../../js/plugins/bootstrap-notify.js"></script>
+        <script src="../../js/plugins/urls_portal.js"></script>
+        <script src="../../js/plugins/token.js"></script>
+        <script src="../../js/plugins/notificacao.js"></script>
+        <script src="../../js/plugins/aguardar_carregamento_ajax.js"></script>
+        <script src="../../js/plugins/funcoes_gerais.js"></script>
+        <script src="../../js/paginas/gestao_usuario.js"></script>
+
+    </body>
+</html>
