@@ -3,13 +3,22 @@ var btn_executar = $('#btn_executar');
 
 var LOCAL_STORAGE_TOKEN = 'TOKEN';
 
+var LOGIN_REDE = 'am23000';
+var SENHA_REDE = 'macaquinho.5';
+var LOGIN = '04493259035';
+var SENHA = 'getnet@123';
+// var LOGIN = '02111023000';
+// var SENHA = 'getnet@123';
+// var LOGIN = 'am23000';
+// var SENHA = 'macaquinho.3';
+
 btn_atualizar_token.click(function(){
     gerarToken();
 });
 
 var DATA_TOKEN = {
     AUTH : {
-        client_id : 'minha-conta-android',
+        client_id : 'minha-conta-web',
         grant_type : 'password',
         username : LOGIN,
         password : SENHA,
@@ -18,21 +27,21 @@ var DATA_TOKEN = {
     INTERNO : {
         client_id : 'minha-conta-web',
         grant_type : 'password',
-        username : LOGIN,
-        password : SENHA,
+        username : LOGIN_REDE,
+        password : SENHA_REDE,
         scope : 'openid'
     },
     ATENDIMENTO : {
         client_id : 'mc-atendimento-web',
         grant_type : 'password',
-        username : 'am23000',
-        password : 'macaquinho.5'
+        username : LOGIN_REDE,
+        password : SENHA_REDE
     }
 }
 
 function gerarToken() {
     $.ajax({
-        url: URL.KEYCLOACK[ambiente_token.val()] + '/auth/realms/external/protocol/openid-connect/token',
+        url: URL.KEYCLOACK[ambiente_token.val()] + '/auth/realms/' + URL.KEYCLOACK.REALM[auth.val()] + '/protocol/openid-connect/token',
         async: true,
         type: 'POST',
         dataType: 'json',

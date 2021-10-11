@@ -6,13 +6,6 @@ var LOCAL_STORAGE_AMBIENTE = 'AMBIENTE';
 var LOCAL_STORAGE_AMBIENTE_TOKEN = 'AMBIENTE_TOKEN';
 var LOCAL_STORAGE_AUTH = 'AUTH';
 var TOKEN;
-var LOGIN = '04493259035';
-var SENHA = 'getnet@123';
-// var LOGIN = '02111023000';
-// var SENHA = 'getnet@123';
-// var LOGIN = 'am23000';
-// var SENHA = 'macaquinho.3';
-
 
 function getConfigs(){
     getAuth();
@@ -50,7 +43,12 @@ var HOST_HTI = 'https://servicosportais-hti.getnet.com.br';
 var URL  = {
     KEYCLOACK : {
         NEW : 'https://getsso-hom.getnet.com.br',
-        OLD : HOST_HTI
+        OLD : HOST_HTI,
+        REALM : {
+            AUTH: 'external',
+            ATENDIMENTO: 'getnet',
+            INTERNO: 'getnet'
+        }
     },
     EXTRATOS : {
         LOCAL : HOST_LOCAL + '8021',
