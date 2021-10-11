@@ -1,6 +1,8 @@
 var mensagem = $('#mensagem');
 
 var btn_consultar = $('#btn_consultar');
+var btn_confirmar = $('#btn_confirmar');
+var btn_cancelar = $('#btn_cancelar');
 var usuario = $('#usuario');
 var nome = $('#nome');
 var email_atual = $('#email_atual');
@@ -18,9 +20,13 @@ $('.form-control').keydown(function (e){
 });
 
 btn_consultar.click(function(){
+    consultarDadosEc();
+});
+
+function consultarDadosEc(){
     consultarUsuario();
     consultarEcs();
-});
+}
 
 function consultarUsuario(){
     $.ajax({
@@ -92,5 +98,39 @@ function preencheTabela(lista){
                 '<td class="text-center">' + ec.nomeFantasia + '</td>' +
             '</tr>'
         );
+    });
+}
+
+btn_confirmar.click(function(){
+    confirmarCancelar(true);
+});
+
+btn_cancelar.click(function(){
+    confirmarCancelar(false);
+});
+
+function confirmarCancelar(isConfirmar){
+    var key = '';
+    $.ajax({
+        url: URL.MANAGEMENT[ambiente.val()] + '/public/v1/user/update-email/' + (isConfirmar ? 'confirm' : 'cancel') + '?key=' + key,
+        async: true,
+        type: 'GET',
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
+        },
+        data: null,
+        success: function (response) {
+            abreNotificacao('success', 'Consulta realizada com sucesso!');
+            mensagem.html(response.status.description);
+            consultarDadosEc();
+        },
+        error: function (response) {
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        }
     });
 }
