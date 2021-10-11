@@ -12,15 +12,16 @@ var email_atual = $('#email_atual');
 var email_solicitacao = $('#email_solicitacao');
 var data_solicitacao = $('#data_solicitacao');
 
+var cor_email_south = '#3bbbfa';
+var cor_email_gmail = '#70ff8e';
+
+var email_south = 'allan.moreira@southsystem.com.br';
+var email_gmail = 'allanfelipe.moreira@gmail.com';
+
 $(function(){
     getConfigs();
+    novo_email.css('background-color', cor_email_gmail);
     usuario.val('02111023000');
-});
-
-$('.form-control').keydown(function (e){
-    if(e.keyCode == 13){
-        consulta();
-    }
 });
 
 btn_consultar.click(function(){
@@ -28,6 +29,7 @@ btn_consultar.click(function(){
 });
 
 function consultarDadosEc(){
+    hash.val('');
     consultarUsuario();
     consultarEcs();
 }
@@ -46,6 +48,7 @@ function consultarUsuario(){
             abreNotificacao('success', 'Consulta realizada com sucesso!');
 
             email_solicitacao.val('').css('background-color', '#eee');;
+            email_atual.val('').css('background-color', '#eee');;
             data_solicitacao.val('');
 
             var usuario = response.data;
@@ -60,10 +63,19 @@ function consultarUsuario(){
 
             email_atual.val(emailAtual);
             email_solicitacao.val(novoEmail);
-            if(novoEmail !== '' && emailAtual !== novoEmail)
-                email_solicitacao.css('background-color', '#efef6f');
-            else
-                email_solicitacao.css('background-color', '#eee');
+            if(emailAtual === email_south) {
+                email_atual.css('background-color', cor_email_south);
+                novo_email.val(email_gmail).trigger('change');
+            } else if(emailAtual === email_gmail) {
+                email_atual.css('background-color', cor_email_gmail);
+                novo_email.val(email_south).trigger('change');
+            }
+
+            if(novoEmail === email_south)
+                email_solicitacao.css('background-color', cor_email_south);
+            else if(novoEmail === email_gmail)
+                email_solicitacao.css('background-color', cor_email_gmail);
+
         },
         error: function (response) {
             if(response.status === 401){
@@ -180,3 +192,10 @@ btn_alterar.click(function(){
 function getHash(link){
     return link.split('key=')[1];
 }
+
+novo_email.change(function(){
+    if(this.value === email_south)
+        novo_email.css('background-color', cor_email_south);
+    else if(this.value === email_gmail)
+        novo_email.css('background-color', cor_email_gmail);
+});
