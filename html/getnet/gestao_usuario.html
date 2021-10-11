@@ -68,8 +68,15 @@
                 <h4><strong>Endpoint</strong></h4>
                 <label>Usuário</label>
                 <input id="usuario" class="form-control" placeholder="usuário">
+                <label>Novo email</label>
+                <input id="novo_email" class="form-control" placeholder="usuário">
+                <label>Hash</label>
+                <input id="hash" class="form-control" placeholder="hash">
                 <br>
-                <button class="btn btn-primary" id="btn_executar">Executar</button>
+                <button class="btn btn-primary" id="btn_consultar">Consultar</button>
+                <button class="btn btn-primary" id="btn_alterar">Alterar</button>
+                <button class="btn btn-success" id="btn_confirmar">Confirmar</button>
+                <button class="btn btn-danger" id="btn_cancelar">Cancelar</button>
             </div>
         </div>
 
@@ -81,18 +88,26 @@
             <h4><strong>Retorno</strong></h4>
             <div class="col-lg-4">
                 <label>Usuário</label>
-                <input id="nome" class="form-control disabled" disabled>
+                <input id="nome" class="form-control" disabled>
             </div>
             <div class="col-lg-4">
                 <label>Email Atual</label>
-                <input id="email_atual" class="form-control disabled" disabled>
+                <input id="email_atual" class="form-control" disabled>
             </div>
             <div class="col-lg-4">
                 <label>Email Solicitação</label>
-                <input id="email_solicitacao" class="form-control disabled" disabled>
+                <input id="email_solicitacao" class="form-control" disabled>
             </div>
+        </div>
+
+        <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
+            <h4><strong>Estabelecimentos</strong></h4>
             <table id="tabela" class="table table-bordered table-striped">
-                <thead></thead>
+                <thead>
+                <th>EC</th>
+                <th>Razão Social</th>
+                <th>Nome Fantasia</th>
+                </thead>
                 <tbody></tbody>
             </table>
         </div>

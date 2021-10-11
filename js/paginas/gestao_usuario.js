@@ -1,5 +1,6 @@
 var mensagem = $('#mensagem');
 
+var btn_consultar = $('#btn_consultar');
 var usuario = $('#usuario');
 var nome = $('#nome');
 var email_atual = $('#email_atual');
@@ -16,11 +17,12 @@ $('.form-control').keydown(function (e){
     }
 });
 
-btn_executar.click(function(){
-    consulta();
+btn_consultar.click(function(){
+    consultarUsuario();
+    consultarEcs();
 });
 
-function consulta() {
+function consultarUsuario(){
     $.ajax({
         url: URL.MANAGEMENT[ambiente.val()] + '/v1/user/'+usuario.val(),
         async: true,
@@ -35,8 +37,15 @@ function consulta() {
             mensagem.html(response.status.description);
             var usuario = response.data;
             nome.val(usuario.firstName + ' ' + usuario.lastName);
-            email_atual.val(usuario.email);
-            email_solicitacao.val(usuario.solicitacaoEmail.emailNew);
+
+            var emailAtual = usuario.email;
+            var novoEmail = usuario.solicitacaoEmail.emailNew;
+            email_atual.val(emailAtual);
+            email_solicitacao.val(novoEmail);
+            if(emailAtual !== novoEmail)
+                email_solicitacao.css('background-color', '#efef6f');
+            else
+                email_solicitacao.css('background-color', '#eee');
         },
         error: function (response) {
             if(response.status === 401){
@@ -48,27 +57,40 @@ function consulta() {
     });
 }
 
-function preencheTabela(tecnologias, lista_taxas){
-    var header = '<tr><th></th>';
-    $.each(tecnologias, function (i) {
-        header += '<th class="text-center">'+tecnologias[i].chaveTecnologia.toUpperCase()+'</th>';
-    });
-    header += '</tr>';
-    $('#tabela thead').append(header);
+function consultarEcs(){
+    $.ajax({
+        url: URL.MANAGEMENT[ambiente.val()] + '/v1/user/' + usuario.val() + '/merchants',
+        async: true,
+        type: 'GET',
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
+        },
+        data: null,
+        success: function (response) {
+            abreNotificacao('success', 'Consulta realizada com sucesso!');
+            mensagem.html(response.status.description);
+            preencheTabela(response.data);
 
-    var html = '';
-    lista_taxas.forEach(function (item_taxa_modalidade){
-        if(item_taxa_modalidade.taxas.length !== 0) {
-            var cor_celula = '';
-            if(item_taxa_modalidade.modalidade === 'Parcelado 10x')
-                cor_celula = ';background-color: yellow';
-            html += '<tr>' +
-                '<td class="text-center" style="width: 200px '+cor_celula+'"><strong>' + item_taxa_modalidade.modalidade + '</strong></td>';
-            item_taxa_modalidade.taxas.forEach(function (taxa) {
-                html += '<td class="text-center" style="'+cor_celula+'">' + converteFloatParaMoeda(taxa, 2) + '</td>';
-            });
-            html += '<tr>';
+        },
+        error: function (response) {
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
         }
     });
-    $('#tabela tbody').append(html);
+}
+
+function preencheTabela(lista){
+    lista.forEach(function (ec){
+        $('#tabela tbody').append(
+            '<tr>' +
+                '<td class="text-center">' + ec.id + '</td>' +
+                '<td class="text-center">' + ec.razaoSocial + '</td>' +
+                '<td class="text-center">' + ec.nomeFantasia + '</td>' +
+            '</tr>'
+        );
+    });
 }
