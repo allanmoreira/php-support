@@ -2,9 +2,11 @@ var mensagem = $('#mensagem');
 
 var btn_consultar = $('#btn_consultar');
 var btn_confirmar = $('#btn_confirmar');
+var btn_alterar = $('#btn_alterar');
 var btn_cancelar = $('#btn_cancelar');
 var usuario = $('#usuario');
 var nome = $('#nome');
+var novo_email = $('#novo_email');
 var email_atual = $('#email_atual');
 var email_solicitacao = $('#email_solicitacao');
 
@@ -134,3 +136,28 @@ function confirmarCancelar(isConfirmar){
         }
     });
 }
+
+btn_alterar.click(function(){
+    $.ajax({
+        url: URL.MANAGEMENT[ambiente.val()] + '/v1/user/' + usuario.val() + '/update-email/request?email=' + novo_email.val(),
+        async: true,
+        type: 'GET',
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
+        },
+        data: null,
+        success: function (response) {
+            abreNotificacao('info', 'Email alterado com sucesso!');
+            mensagem.html(response.status.description);
+
+        },
+        error: function (response) {
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        }
+    });
+});
