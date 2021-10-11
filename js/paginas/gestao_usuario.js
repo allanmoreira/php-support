@@ -6,6 +6,7 @@ var btn_alterar = $('#btn_alterar');
 var btn_cancelar = $('#btn_cancelar');
 var usuario = $('#usuario');
 var nome = $('#nome');
+var hash = $('#hash');
 var novo_email = $('#novo_email');
 var email_atual = $('#email_atual');
 var email_solicitacao = $('#email_solicitacao');
@@ -114,9 +115,8 @@ btn_cancelar.click(function(){
 });
 
 function confirmarCancelar(isConfirmar){
-    var key = '';
     $.ajax({
-        url: URL.MANAGEMENT[ambiente.val()] + '/public/v1/user/update-email/' + (isConfirmar ? 'confirm' : 'cancel') + '?key=' + key,
+        url: URL.MANAGEMENT[ambiente.val()] + '/public/v1/user/update-email/' + (isConfirmar ? 'confirm' : 'cancel') + '?key=' + getHash(hash.val()),
         async: true,
         type: 'GET',
         dataType: 'json',
@@ -163,3 +163,7 @@ btn_alterar.click(function(){
         }
     });
 });
+
+function getHash(link){
+    return link.split('key=')[1];
+}
