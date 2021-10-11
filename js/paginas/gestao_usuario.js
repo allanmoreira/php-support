@@ -44,16 +44,23 @@ function consultarUsuario(){
         data: null,
         success: function (response) {
             abreNotificacao('success', 'Consulta realizada com sucesso!');
-            mensagem.html(response.status.description);
+
+            email_solicitacao.val('').css('background-color', '#eee');;
+            data_solicitacao.val('');
+
             var usuario = response.data;
             nome.val(usuario.firstName + ' ' + usuario.lastName);
 
             var emailAtual = usuario.email;
-            var novoEmail = usuario.solicitacaoEmail.emailNew;
+            var novoEmail = '';
+            if(usuario.solicitacaoEmail !== undefined){
+                novoEmail = usuario.solicitacaoEmail.emailNew;
+                data_solicitacao.val(converteTimestampParaString(usuario.solicitacaoEmail.dataCriacao));
+            }
+
             email_atual.val(emailAtual);
-            data_solicitacao.val(converteTimestampParaString(usuario.solicitacaoEmail.dataCriacao));
             email_solicitacao.val(novoEmail);
-            if(emailAtual !== novoEmail)
+            if(novoEmail !== '' && emailAtual !== novoEmail)
                 email_solicitacao.css('background-color', '#efef6f');
             else
                 email_solicitacao.css('background-color', '#eee');
@@ -80,7 +87,6 @@ function consultarEcs(){
         data: null,
         success: function (response) {
             abreNotificacao('success', 'Consulta realizada com sucesso!');
-            mensagem.html(response.status.description);
             preencheTabela(response.data);
 
         },
@@ -125,7 +131,10 @@ function confirmarCancelar(isConfirmar){
         },
         data: null,
         success: function (response) {
-            abreNotificacao('success', 'Consulta realizada com sucesso!');
+            if(response.status.reference === undefined)
+                abreNotificacao('info', 'Solicitação realizada com sucesso!');
+            else
+                abreNotificacao('danger', response.status.description);
             mensagem.html(response.status.description);
             consultarDadosEc();
         },
@@ -150,8 +159,12 @@ btn_alterar.click(function(){
         },
         data: null,
         success: function (response) {
-            abreNotificacao('info', 'Email alterado com sucesso!');
+            if(response.status.reference === undefined)
+                abreNotificacao('info', 'Email alterado com sucesso!');
+            else
+                abreNotificacao('danger', response.status.description);
             mensagem.html(response.status.description);
+            consultarDadosEc();
 
         },
         error: function (response) {
