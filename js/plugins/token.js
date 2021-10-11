@@ -7,36 +7,36 @@ btn_atualizar_token.click(function(){
     gerarToken();
 });
 
-var data_token = {
-    auth : {
+var DATA_TOKEN = {
+    AUTH : {
         client_id : 'minha-conta-android',
         grant_type : 'password',
         username : LOGIN,
         password : SENHA,
         scope : 'offline_access'
     },
-    interno : {
+    INTERNO : {
         client_id : 'minha-conta-web',
         grant_type : 'password',
         username : LOGIN,
         password : SENHA,
         scope : 'openid'
+    },
+    ATENDIMENTO : {
+        client_id : 'mc-atendimento-web',
+        grant_type : 'password',
+        username : 'am23000',
+        password : 'macaquinho.5'
     }
 }
 
-function gerarToken(token_origin, token_type) {
-    var url = URL.KEYCLOACK.NOVO + '/auth/realms/external/protocol/openid-connect/token';
-    if(token_origin === TOKEN_ORIGIN.OLD)
-        url = URL.KEYCLOACK.OLD + '/auth/realms/external/protocol/openid-connect/token';
-    var data = data_token.auth;
-    if(token_type === TOKEN_TYPE.INTERNO)
-        data = data_token.interno;
+function gerarToken() {
     $.ajax({
-        url: url,
+        url: URL.KEYCLOACK[ambiente_token.val()] + '/auth/realms/external/protocol/openid-connect/token',
         async: true,
         type: 'POST',
         dataType: 'json',
-        data: data,
+        data: DATA_TOKEN[auth.val()],
         statusCode: {
             401: function (response) {
                 abreNotificacao('warning', 'Não autorizado!');

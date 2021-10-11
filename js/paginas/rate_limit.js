@@ -5,7 +5,7 @@ var username = $('#username');
 var tabela = $('#tabela');
 
 $(function(){
-    getAmbiente();
+    getConfigs();
     ec.val('338869');
     username.val('02823842004');
 });
