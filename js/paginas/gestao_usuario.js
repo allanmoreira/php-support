@@ -99,6 +99,7 @@ function consultarEcs(){
         data: null,
         success: function (response) {
             abreNotificacao('success', 'Consulta realizada com sucesso!');
+            $('#tabela tbody > tr').remove();
             preencheTabela(response.data);
 
         },
