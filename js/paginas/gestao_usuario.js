@@ -139,9 +139,6 @@ function confirmarCancelar(isConfirmar){
         async: true,
         type: 'GET',
         dataType: 'json',
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
-        },
         data: null,
         success: function (response) {
             if(response.status.reference === undefined)
