@@ -41,7 +41,7 @@ function consultarUsuario(){
         type: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
         },
         data: null,
         success: function (response) {
@@ -94,7 +94,7 @@ function consultarEcs(){
         type: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
         },
         data: null,
         success: function (response) {
@@ -165,7 +165,7 @@ btn_alterar.click(function(){
         type: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
         },
         data: null,
         success: function (response) {

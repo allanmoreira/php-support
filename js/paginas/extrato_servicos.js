@@ -70,7 +70,7 @@ function consulta() {
         type: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
         },
         data: {
             dataMinima : data_inicio.val(),

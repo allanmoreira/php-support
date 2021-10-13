@@ -30,7 +30,7 @@ function consulta() {
         type: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("authorization", 'bearer ' + getToken());
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
         },
         data: {
             valor : converteMoedaParaFloat(valor.val(), 2),
