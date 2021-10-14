@@ -89,6 +89,139 @@ function getDadosTeste(mes){
                 totalProjecao: 375.6,
                 totalAtual: 375.6
             },
+        },
+        'Abril': {
+            salarios: 14450.12,
+            fixas: {
+                totalProjecao: 3687.63,
+                totalAtual: 3864.23
+            },
+            variaveis:{
+                totalProjecao: 0,
+                totalAtual: 3622.35
+            },
+            adicionais:{
+                totalProjecao: 2716.11,
+                totalAtual: 4074.4
+            },
+            extraordinarias:{
+                totalProjecao: 218.6,
+                totalAtual: 218.6
+            },
+        },
+        'Maio': {
+            salarios: 13083.6,
+            fixas: {
+                totalProjecao: 3864.23,
+                totalAtual: 3705.82
+            },
+            variaveis:{
+                totalProjecao: 0,
+                totalAtual: 4313.61
+            },
+            adicionais:{
+                totalProjecao: 3811.05,
+                totalAtual: 2559.22
+            },
+            extraordinarias:{
+                totalProjecao: 218.6,
+                totalAtual: 218.6
+            },
+        },
+        'Junho': {
+            salarios: 0,
+            fixas: {
+                totalProjecao: 3705.82,
+                totalAtual: 3829.15
+            },
+            variaveis:{
+                totalProjecao: 0,
+                totalAtual: 3970.4
+            },
+            adicionais:{
+                totalProjecao: 2454.27,
+                totalAtual: 3602.07
+            },
+            extraordinarias:{
+                totalProjecao: 218.6,
+                totalAtual: 218.6
+            },
+        },
+        'Julho': {
+            salarios: 0,
+            fixas: {
+                totalProjecao: 3829.15,
+                totalAtual: 3948.07
+            },
+            variaveis:{
+                totalProjecao: 0,
+                totalAtual: 3547.63
+            },
+            adicionais:{
+                totalProjecao: 3602.07,
+                totalAtual: 3601.3
+            },
+            extraordinarias:{
+                totalProjecao: 218.6,
+                totalAtual: 218.6
+            },
+        },
+        'Agosto': {
+            salarios: 0,
+            fixas: {
+                totalProjecao: 3948.07,
+                totalAtual: 3404.77
+            },
+            variaveis:{
+                totalProjecao: 0,
+                totalAtual: 4007.7
+            },
+            adicionais:{
+                totalProjecao: 3124.26,
+                totalAtual: 3123.51
+            },
+            extraordinarias:{
+                totalProjecao: 218.6,
+                totalAtual: 258.57
+            },
+        },
+        'Setembro': {
+            salarios: 0,
+            fixas: {
+                totalProjecao: 3404.77,
+                totalAtual: 4097.1
+            },
+            variaveis:{
+                totalProjecao: 0,
+                totalAtual: 4029.87
+            },
+            adicionais:{
+                totalProjecao: 3067.52,
+                totalAtual: 3067.52
+            },
+            extraordinarias:{
+                totalProjecao: 258.57,
+                totalAtual: 258.57
+            },
+        },
+        'Outubro': {
+            salarios: 0,
+            fixas: {
+                totalProjecao: 3404.77,
+                totalAtual: 3411.68
+            },
+            variaveis:{
+                totalProjecao: 0,
+                totalAtual: 198.93
+            },
+            adicionais:{
+                totalProjecao: 1488.63,
+                totalAtual: 1461.08
+            },
+            extraordinarias:{
+                totalProjecao: 109.77,
+                totalAtual: 109.77
+            },
         }
     };
     return lista[mes];
