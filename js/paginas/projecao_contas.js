@@ -234,12 +234,12 @@ function preencheTabela(mesExtenso, mesInt, dadoApi, casoTeste){
             '<td colspan="6" style="background: '+cor_titulo+'" class="text-center"><strong>' + mesExtenso + '</strong></td>' +
         '</tr>' +
         '<tr>' +
-        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Salários</strong></td>' +
-        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Tipo</strong></td>' +
-        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Fixas</strong></td>' +
-        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Variáveis</strong></td>' +
-        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Adicionais</strong></td>' +
-        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Extraordinárias</strong></td>' +
+        '<td class="text-center"><strong>Salários</strong></td>' +
+        '<td class="text-center"><strong>Tipo</strong></td>' +
+        '<td class="text-center"><strong>Fixas</strong></td>' +
+        '<td class="text-center"><strong>Variáveis</strong></td>' +
+        '<td class="text-center"><strong>Adicionais</strong></td>' +
+        '<td class="text-center"><strong>Extraordinárias</strong></td>' +
         '</tr>' +
         '<tr>' +
             '<td rowspan="2">' + converteFloatParaMoeda(dadoApi.recebido, 2) + '</td>' +
