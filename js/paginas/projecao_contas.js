@@ -228,17 +228,18 @@ function getDadosTeste(mes){
 }
 
 function preencheTabela(mesExtenso, mesInt, dadoApi, casoTeste){
+    var cor_titulo = '#e0e0e0';
     $('#tabela tbody').append(
         '<tr>' +
-            '<td colspan="6" style="background: #e0e0e0" class="text-center"><strong>' + mesExtenso + '</strong></td>' +
+            '<td colspan="6" style="background: '+cor_titulo+'" class="text-center"><strong>' + mesExtenso + '</strong></td>' +
         '</tr>' +
         '<tr>' +
-        '<td style="background: #e0e0e0" class="text-center"><strong>Salários</strong></td>' +
-        '<td style="background: #e0e0e0" class="text-center"><strong>Tipo</strong></td>' +
-        '<td style="background: #e0e0e0" class="text-center"><strong>Fixas</strong></td>' +
-        '<td style="background: #e0e0e0" class="text-center"><strong>Variáveis</strong></td>' +
-        '<td style="background: #e0e0e0" class="text-center"><strong>Adicionais</strong></td>' +
-        '<td style="background: #e0e0e0" class="text-center"><strong>Extraordinárias</strong></td>' +
+        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Salários</strong></td>' +
+        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Tipo</strong></td>' +
+        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Fixas</strong></td>' +
+        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Variáveis</strong></td>' +
+        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Adicionais</strong></td>' +
+        '<td style="background: '+cor_titulo+'" class="text-center"><strong>Extraordinárias</strong></td>' +
         '</tr>' +
         '<tr>' +
             '<td rowspan="2">' + converteFloatParaMoeda(dadoApi.recebido, 2) + '</td>' +
@@ -262,7 +263,7 @@ function getCelula(mes, teste, grupo, tipo){
     var valor_mes = mes[grupo][tipo];
     var valor_teste = teste[grupo][tipo];
     var igual = valor_mes === valor_teste;
-    return '<td style="background: '+(igual ? cor_sucesso : cor_falha)+'">' +
+    return '<td class="text-center" style="background: '+(igual ? cor_sucesso : cor_falha)+'">' +
                 converteFloatParaMoeda(valor_mes, 2) +
                 (igual ? '' : (' <strong>('+converteFloatParaMoeda(valor_teste, 2)+')</strong>')) +
             '</td>';
