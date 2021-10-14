@@ -33,11 +33,11 @@ function getDadosAPI(){
             var lista_dados = response.data.totaisMes;
             $.each(lista_dados, function (i) {
                 var mesProjecao = lista_dados[i];
-                var mes = parseInt(mesProjecao.dataReferencia.split('/')[1]);
-                mes = mesExtenso(mes);
-                var casoTeste = getDadosTeste(mes);
+                var mesInt = parseInt(mesProjecao.dataReferencia.split('/')[1]);
+                var mesString = mesExtenso(mesInt);
+                var casoTeste = getDadosTeste(mesString);
                 if(casoTeste !== undefined)
-                    preencheTabela(mes, mesProjecao, casoTeste);
+                    preencheTabela(mesString, mesInt, mesProjecao, casoTeste);
             });
         },
         error: function (response) {
@@ -94,12 +94,12 @@ function getDadosTeste(mes){
     return lista[mes];
 }
 
-function preencheTabela(mes, dadoApi, casoTeste){
-    var classe_linha = mes%2 === 0 ? '#f9f9f9' : '#ffffff';
+function preencheTabela(mesExtenso, mesInt, dadoApi, casoTeste){
+    var classe_linha = mesInt%2 === 0 ? '#ffffff' : '#e0e0e0';
 
     $('#tabela tbody').append(
         '<tr>' +
-            '<td style="background: '+classe_linha+'" rowspan="2"><strong>' + mes + '</strong></td>' +
+            '<td style="background: '+classe_linha+'" rowspan="2"><strong>' + mesExtenso + '</strong></td>' +
             '<td style="background: '+classe_linha+'" rowspan="2">' + converteFloatParaMoeda(dadoApi.recebido, 2) + '</td>' +
             '<td style="background: '+classe_linha+'"><strong>Projeção</strong></td>' +
             getCelula(dadoApi, casoTeste, 'fixas', 'totalProjecao') +
