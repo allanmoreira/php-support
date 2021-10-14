@@ -88,15 +88,15 @@ function preencheTabela(mes, dadoApi, casoTeste){
     $('#tabela tbody').append(
         '<tr>' +
             '<td style="background: '+classe_linha+'" rowspan="2"><strong>' + mes + '</strong></td>' +
-            '<td style="background: '+classe_linha+'" rowspan="2">' + dadoApi.recebido + '</td>' +
-            '<td style="background: '+classe_linha+'">Projeção</td>' +
+            '<td style="background: '+classe_linha+'" rowspan="2">' + converteFloatParaMoeda(dadoApi.recebido, 2) + '</td>' +
+            '<td style="background: '+classe_linha+'"><strong>Projeção</strong></td>' +
             getCelula(dadoApi, casoTeste, 'fixas', 'totalProjecao') +
             getCelula(dadoApi, casoTeste, 'variaveis', 'totalProjecao') +
             getCelula(dadoApi, casoTeste, 'adicionais', 'totalProjecao') +
             getCelula(dadoApi, casoTeste, 'extraordinarias', 'totalProjecao') +
         '</tr>' +
         '<tr>' +
-            '<td style="background: '+classe_linha+'">Atual</td>' +
+            '<td style="background: '+classe_linha+'"><strong>Atual</strong></td>' +
             getCelula(dadoApi, casoTeste, 'fixas', 'totalAtual') +
             getCelula(dadoApi, casoTeste, 'variaveis', 'totalAtual') +
             getCelula(dadoApi, casoTeste, 'adicionais', 'totalAtual') +
