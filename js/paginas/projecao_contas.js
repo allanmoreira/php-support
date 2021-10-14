@@ -13,13 +13,7 @@ btn_executar.click(function(){
 });
 
 function consulta() {
-    $('#tabela tbody > tr').remove();
-    var lista_dados = getDadosTeste();
     getDadosAPI();
-    // $.each(lista_dados, function (i) {
-    //     var despesa = lista_dados[i];
-    //     preencheTabela(despesa);
-    // });
 }
 
 function getDadosAPI(){
@@ -35,6 +29,7 @@ function getDadosAPI(){
         success: function (response) {
             abreNotificacao('success', 'Consulta realizada com sucesso!');
             mensagem.html(response.status.description);
+            $('#tabela tbody > tr').remove();
             var lista_dados = response.data.totaisMes;
             $.each(lista_dados, function (i) {
                 var mesProjecao = lista_dados[i];
@@ -75,14 +70,31 @@ function getDadosTeste(mes){
                 totalProjecao: 218.6,
                 totalAtual: 375.6
             },
+        },
+        'Mar\u00E7o': {
+            salarios: 12564.31,
+            fixas: {
+                totalProjecao: 3881.77,
+                totalAtual: 3687.63
+            },
+            variaveis:{
+                totalProjecao: 0,
+                totalAtual: 2956.4
+            },
+            adicionais:{
+                totalProjecao: 2782.73,
+                totalAtual: 2716.11
+            },
+            extraordinarias:{
+                totalProjecao: 375.6,
+                totalAtual: 375.6
+            },
         }
     };
     return lista[mes];
 }
 
 function preencheTabela(mes, dadoApi, casoTeste){
-    console.log(dadoApi);
-    console.log(casoTeste);
     var classe_linha = mes%2 === 0 ? '#f9f9f9' : '#ffffff';
 
     $('#tabela tbody').append(
