@@ -228,20 +228,28 @@ function getDadosTeste(mes){
 }
 
 function preencheTabela(mesExtenso, mesInt, dadoApi, casoTeste){
-    var classe_linha = mesInt%2 === 0 ? '#ffffff' : '#e0e0e0';
-
     $('#tabela tbody').append(
         '<tr>' +
-            '<td style="background: '+classe_linha+'" rowspan="2"><strong>' + mesExtenso + '</strong></td>' +
-            '<td style="background: '+classe_linha+'" rowspan="2">' + converteFloatParaMoeda(dadoApi.recebido, 2) + '</td>' +
-            '<td style="background: '+classe_linha+'"><strong>Projeção</strong></td>' +
+            '<td colspan="6" style="background: #e0e0e0" class="text-center"><strong>' + mesExtenso + '</strong></td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td style="background: #e0e0e0" class="text-center"><strong>Salários</strong></td>' +
+        '<td style="background: #e0e0e0" class="text-center"><strong>Tipo</strong></td>' +
+        '<td style="background: #e0e0e0" class="text-center"><strong>Fixas</strong></td>' +
+        '<td style="background: #e0e0e0" class="text-center"><strong>Variáveis</strong></td>' +
+        '<td style="background: #e0e0e0" class="text-center"><strong>Adicionais</strong></td>' +
+        '<td style="background: #e0e0e0" class="text-center"><strong>Extraordinárias</strong></td>' +
+        '</tr>' +
+        '<tr>' +
+            '<td rowspan="2">' + converteFloatParaMoeda(dadoApi.recebido, 2) + '</td>' +
+            '<td><strong>Projeção</strong></td>' +
             getCelula(dadoApi, casoTeste, 'fixas', 'totalProjecao') +
             getCelula(dadoApi, casoTeste, 'variaveis', 'totalProjecao') +
             getCelula(dadoApi, casoTeste, 'adicionais', 'totalProjecao') +
             getCelula(dadoApi, casoTeste, 'extraordinarias', 'totalProjecao') +
         '</tr>' +
         '<tr>' +
-            '<td style="background: '+classe_linha+'"><strong>Atual</strong></td>' +
+            '<td><strong>Atual</strong></td>' +
             getCelula(dadoApi, casoTeste, 'fixas', 'totalAtual') +
             getCelula(dadoApi, casoTeste, 'variaveis', 'totalAtual') +
             getCelula(dadoApi, casoTeste, 'adicionais', 'totalAtual') +
