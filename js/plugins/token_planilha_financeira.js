@@ -24,11 +24,19 @@ function gerarToken() {
             }
         },
         success: function (response) {
-            localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.token);
-            abreNotificacao('success', 'Token gerado com sucesso!');
+            if(response.status.value == -1){
+                abreNotificacao('danger', 'ERRO');
+            } else {
+                localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.token);
+                abreNotificacao('success', 'Token gerado com sucesso!');
+            }
         },
         error: function (response) {
-            abreNotificacao('danger', 'ERRO');
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
         }
     });
 }
