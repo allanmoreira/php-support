@@ -1,27 +1,20 @@
 function getDadosTeste(mes){
-    var projecao_mes_atual = {
-        fixas : 3404.77,
-        variaveis : 3884.04,
-        adicionais : 1488.63,
-        extraordinarias : 109.77
-
-    };
     var projecao_final = {
         salarios: 0,
         fixas: {
-            totalProjecao: projecao_mes_atual.fixas,
+            totalProjecao: 3816.64,
             totalAtual: 0
         },
         variaveis:{
-            totalProjecao: projecao_mes_atual.variaveis,
+            totalProjecao: 3884.04,
             totalAtual: 0
         },
         adicionais:{
-            totalProjecao: projecao_mes_atual.adicionais,
+            totalProjecao: 1488.63,
             totalAtual: 0
         },
         extraordinarias:{
-            totalProjecao: projecao_mes_atual.extraordinarias,
+            totalProjecao: 109.77,
             totalAtual: 0
         },
     };
@@ -182,19 +175,19 @@ function getDadosTeste(mes){
         '01/10/2021': {
             salarios: 0,
             fixas: {
-                totalProjecao: projecao_mes_atual.fixas,
+                totalProjecao: 4097.1,
                 totalAtual: 3411.68
             },
             variaveis:{
-                totalProjecao: projecao_mes_atual.variaveis,
-                totalAtual: 198.93
+                totalProjecao: 3884.04,
+                totalAtual: 1437.52
             },
             adicionais:{
-                totalProjecao: projecao_mes_atual.adicionais,
-                totalAtual: 1461.08
+                totalProjecao: 1488.63,
+                totalAtual: 1641.08
             },
             extraordinarias:{
-                totalProjecao: projecao_mes_atual.extraordinarias,
+                totalProjecao: 109.77,
                 totalAtual: 109.77
             },
         },
