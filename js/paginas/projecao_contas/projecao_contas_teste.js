@@ -1,23 +1,20 @@
 function getDadosTeste(mes){
-    var projecao_final = {
-        salarios: 0,
-        fixas: {
-            totalProjecao: 3816.64,
+    var projecao_fixas = {
+            totalProjecao: 3411.68,
             totalAtual: 0
-        },
-        variaveis:{
-            totalProjecao: 3884.04,
+        };
+    var projecao_variaveis = {
+            totalProjecao: 3774.54,
             totalAtual: 0
-        },
-        adicionais:{
-            totalProjecao: 1488.63,
+        };
+    var projecao_adicionais = {
+            totalProjecao: 1488.58,
             totalAtual: 0
-        },
-        extraordinarias:{
-            totalProjecao: 109.77,
+        };
+    var projecao_extraordinarias = {
+            totalProjecao: 0,
             totalAtual: 0
-        },
-    };
+        };
 
     var lista = {
         '01/02/2021': {
@@ -191,9 +188,30 @@ function getDadosTeste(mes){
                 totalAtual: 109.77
             },
         },
-        '01/11/2021': projecao_final,
-        '01/12/2021': projecao_final,
-        '01/01/2022': projecao_final
+        '01/11/2021': {
+            salarios: 0,
+            fixas: projecao_fixas,
+            variaveis: projecao_variaveis,
+            adicionais:{
+                totalProjecao: 1641.08,
+                totalAtual: 0
+            },
+            extraordinarias: projecao_extraordinarias,
+        },
+        '01/12/2021': {
+            salarios: 0,
+            fixas: projecao_fixas,
+            variaveis: projecao_variaveis,
+            adicionais: projecao_adicionais,
+            extraordinarias: projecao_extraordinarias,
+        },
+        '01/01/2022': {
+            salarios: 0,
+            fixas: projecao_fixas,
+            variaveis: projecao_variaveis,
+            adicionais: projecao_adicionais,
+            extraordinarias: projecao_extraordinarias,
+        }
     };
     return lista[mes];
 }
