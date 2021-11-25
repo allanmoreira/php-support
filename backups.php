@@ -8,9 +8,10 @@
 <?php
     $arquivos = scandir('/var/www/html/backups/planilha_financeira');
     foreach ($arquivos as $arquivo){
+        if($arquivo != '.' && $arquivo != '..')
         echo '<tr>' .
                 '<td>'. $arquivo .'</td>' .
-                '<td>'. date("F d Y H:i:s.", filemtime($arquivo)) . '</td>' .
+                '<td>'. date("d/m/Y H:i:s", filemtime($arquivo)) . '</td>' .
             '</tr>';
     }
 ?>
