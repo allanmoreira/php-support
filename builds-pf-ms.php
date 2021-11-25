@@ -11,7 +11,7 @@
     foreach ($arquivos as $arquivo){
         if($arquivo != '.' && $arquivo != '..')
         echo '<tr>' .
-                '<td><a href="download.php?diretorio='.$diretorio.'&arquivo='. $arquivo.'">'. $arquivo .'</a></td>' .
+                '<td><a href="controller/download.php?diretorio='.$diretorio.'&arquivo='. $arquivo.'">'. $arquivo .'</a></td>' .
             '</tr>';
     }
 ?>

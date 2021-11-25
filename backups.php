@@ -1,4 +1,7 @@
-<?php require_once 'templates/header.php'; ?>
+<?php
+    require_once 'templates/header.php';
+    use config\Config;
+?>
 
     <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
         <h4><strong>Retorno</strong></h4>
@@ -6,7 +9,7 @@
             <tbody>
 
 <?php
-    $diretorio = '/var/www/html/backups/planilha_financeira/';
+    $diretorio = Config::getApachePath() . Config::getBackupPath() . 'planilha_financeira/';
     $arquivos = scandir($diretorio, 1);
     foreach ($arquivos as $arquivo){
         if($arquivo != '.' && $arquivo != '..')
