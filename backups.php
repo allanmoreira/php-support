@@ -6,21 +6,27 @@
             <tbody>
 
 <?php
-    $arquivos = scandir('/var/www/html/backups/planilha_financeira', 1);
+    $diretorio = '/var/www/html/backups/planilha_financeira/';
+    $arquivos = scandir($diretorio, 1);
     foreach ($arquivos as $arquivo){
         if($arquivo != '.' && $arquivo != '..')
         echo '<tr>' .
-                '<td>'. $arquivo .'</td>' .
-                '<td>'. date("d f Y H:i:s", filemtime($arquivo)) . '</td>' .
-                '<td>'. date("d F Y H:i:s", filemtime($arquivo)) . '</td>' .
-                '<td>'. date("d m Y H:i:s", filemtime($arquivo)) . '</td>' .
-                '<td>'. date("d M Y H:i:s", filemtime($arquivo)) . '</td>' .
+                '<td href="'.download($diretorio, $arquivo).'">'. $arquivo .'</td>' .
             '</tr>';
     }
 ?>
             </tbody>
         </table>
     </div>
+
+<?php
+    function download($diretorio, $arquivo){
+        header('Content-Type: application/csv');
+        header('Content-Disposition: attachment; filename=' . $arquivo);
+        header('Pragma: no-cache');
+        readfile($diretorio . $arquivo);
+    }
+?>
 
 <?php require_once 'templates/scripts.php'; ?>
 <script src="static/js/jquery.mask.min.js"></script>
