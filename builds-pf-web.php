@@ -6,7 +6,7 @@
             <tbody>
 
 <?php
-    $diretorio = '/var/www/html/bulds/planilha-financeira-web/';
+    $diretorio = '/var/www/html/builds/planilha-financeira-web/';
     $arquivos = scandir($diretorio, 1);
     foreach ($arquivos as $arquivo){
         if($arquivo != '.' && $arquivo != '..')
