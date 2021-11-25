@@ -9,9 +9,9 @@ pipeline {
             steps {
                 script {
                     sh "rm -r ${APACHE_PATH}/* || true"
-                    sh "cp -R getnet/ ${APACHE_PATH}"
-                    sh "cp -R static/ ${APACHE_PATH}"
-                    sh "cp -R templates/ ${APACHE_PATH}"
+                    sh "cp -r getnet/ ${APACHE_PATH}"
+                    sh "cp -r static/ ${APACHE_PATH}"
+                    sh "cp -r templates/ ${APACHE_PATH}"
                     sh "cp *.php ${APACHE_PATH}"
                 }
             }
