@@ -4,8 +4,8 @@
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
-            <h1>Template Testes</h1>
-            <p>Template de testes usando HTML e JS.</p>
+            <h1>PHP Support</h1>
+            <p>Template de testes usando PHP, HTML e JS.</p>
         </div>
 
     </div> <!-- /container -->
