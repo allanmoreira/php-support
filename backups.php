@@ -23,5 +23,4 @@
 <script src="static/js/plugins/aguardar_carregamento_ajax.js"></script>
 <script src="static/js/jquery.maskMoney.min.js"></script>
 <script src="static/js/plugins/funcoes_gerais.js"></script>
-<script src="static/js/paginas/despesas_maccari.js"></script>
 <?php require_once 'templates/footer.php'; ?>
