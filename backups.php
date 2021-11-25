@@ -11,22 +11,13 @@
     foreach ($arquivos as $arquivo){
         if($arquivo != '.' && $arquivo != '..')
         echo '<tr>' .
-                '<td href="'.download($diretorio, $arquivo).'">'. $arquivo .'</td>' .
+                '<td href="download.php?diretorio='.$diretorio.'&arquivo='. $arquivo.'">'. $arquivo .'</td>' .
             '</tr>';
     }
 ?>
             </tbody>
         </table>
     </div>
-
-<?php
-    function download($diretorio, $arquivo){
-        header('Content-Type: application/csv');
-        header('Content-Disposition: attachment; filename=' . $arquivo);
-        header('Pragma: no-cache');
-        readfile($diretorio . $arquivo);
-    }
-?>
 
 <?php require_once 'templates/scripts.php'; ?>
 <script src="static/js/jquery.mask.min.js"></script>
