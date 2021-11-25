@@ -39,6 +39,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li><a href="backups.php">Backups</a></li>
+                    <li><a href="builds.php">Builds</a></li>
                     <li><a href="upload.php">Upload</a></li>
                     <li><a href="despesas_maccari.php">Despesas Maccari</a></li>
                     <li><a href="projecao_contas.php">Projeção Contas</a></li>
