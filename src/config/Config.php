@@ -1,40 +1,33 @@
 <?php
 
 class Config {
-    private static $nome_projeto = 'php-support';
-    private static $apache_path = '/var/www/html/';
-    private static $build_path = 'builds/';
-    private static $backup_path = 'backups/';
-    private static $projetos_backup = array('planilha_financeira');
-    private static $projetos_build = array('planilha-financeira-ms', 'planilha-financeira-web');
-
 
     public static function getApplicationPath(){
         return $_SERVER['DOCUMENT_ROOT'].'/';
     }
 
     public static function getNomeProjeto(){
-        return self::$nome_projeto;
+        return 'php-support';
     }
 
     public static function getApachePath(){
-        return self::$apache_path;
+        return '/var/www/html/';
     }
 
     public static function getBuildPath(){
-        return self::$build_path;
+        return self::getApachePath() . 'builds/';
     }
 
     public static function getBackupPath(){
-        return self::getApachePath() . self::$backup_path;
+        return self::getApachePath() . 'backups/';
     }
 
     public static function getProjetosBackup(){
-        return self::$projetos_backup;
+        return array('planilha_financeira');
     }
 
     public static function getProjetosBuild(){
-        return self::$projetos_build;
+        return array('planilha-financeira-ms', 'planilha-financeira-web');
     }
 
 

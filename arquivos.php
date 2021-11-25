@@ -1,4 +1,7 @@
-<?php require_once 'templates/header.php'; ?>
+<?php
+    require_once 'templates/header.php';
+    require_once 'src/config/Config.php';
+?>
 
     <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
         <h4><strong>Retorno</strong></h4>
@@ -6,12 +9,19 @@
             <tbody>
 
 <?php
-    $diretorio = '/var/www/html/builds/planilha-financeira-ms/';
+    $tipo = $_GET['tipo'];
+    if($tipo == 'backup'){
+        $diretorio = Config::getBackupPath() . 'planilha_financeira/';
+    } else if($tipo == 'builds') {
+        $projeto = $_GET['projeto'];
+        Config::getBuildPath() . $projeto . '/';
+    }
+
     $arquivos = scandir($diretorio, 1);
     foreach ($arquivos as $arquivo){
         if($arquivo != '.' && $arquivo != '..')
         echo '<tr>' .
-                '<td><a href="controller/download.php?diretorio='.$diretorio.'&arquivo='. $arquivo.'">'. $arquivo .'</a></td>' .
+                '<td><a href="download.php?diretorio='.$diretorio.'&arquivo='. $arquivo.'">'. $arquivo .'</a></td>' .
             '</tr>';
     }
 ?>
