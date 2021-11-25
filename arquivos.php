@@ -14,7 +14,7 @@
         $diretorio = Config::getBackupPath() . 'planilha_financeira/';
     } else if($tipo == 'builds') {
         $projeto = $_GET['projeto'];
-        Config::getBuildPath() . $projeto . '/';
+        $diretorio = Config::getBuildPath() . $projeto . '/';
     }
 
     $arquivos = scandir($diretorio, 1);
