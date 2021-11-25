@@ -35,13 +35,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Template Testes</a>
+                <a class="navbar-brand" href="index.php">Template Testes</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="upload.html">Upload</a></li>
+                    <li><a href="upload.php">Upload</a></li>
                     <li><a href="despesas_maccari.php">Despesas Maccari</a></li>
-                    <li><a href="projecao_contas.html">Projeção Contas</a></li>
+                    <li><a href="projecao_contas.php">Projeção Contas</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Getnet<span class="caret"></span>
@@ -58,3 +58,5 @@
             </div><!--/.nav-collapse -->
         </div>
     </nav>
+
+    <div id="loader" style="display: none" class="loader"></div>
