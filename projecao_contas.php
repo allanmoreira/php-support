@@ -31,15 +31,15 @@
         </div>
 
 <?php require_once 'templates/scripts.php'; ?>
-        <script src="static/js/jquery.mask.min.js"></script>
-        <script src="static/js/jquery.maskMoney.min.js"></script>
-        <script src="static/js/plugins/js.cookie.min.js"></script>
-        <script src="static/js/plugins/bootstrap-notify.js"></script>
-        <script src="static/js/plugins/urls_planilha_financeira.js"></script>
-        <script src="static/js/plugins/token_planilha_financeira.js"></script>
-        <script src="static/js/plugins/notificacao.js"></script>
-        <script src="static/js/plugins/aguardar_carregamento_ajax.js"></script>
-        <script src="static/js/plugins/funcoes_gerais.js"></script>
-        <script src="static/js/paginas/projecao_contas/projecao_contas.js"></script>
-        <script src="static/js/paginas/projecao_contas/projecao_contas_teste.js"></script>
+        <script src="static//js/jquery.mask.min.js"></script>
+        <script src="static//js/jquery.maskMoney.min.js"></script>
+        <script src="static//js/plugins/js.cookie.min.js"></script>
+        <script src="static//js/plugins/bootstrap-notify.js"></script>
+        <script src="static//js/plugins/urls_planilha_financeira.js"></script>
+        <script src="static//js/plugins/token_planilha_financeira.js"></script>
+        <script src="static//js/plugins/notificacao.js"></script>
+        <script src="static//js/plugins/aguardar_carregamento_ajax.js"></script>
+        <script src="static//js/plugins/funcoes_gerais.js"></script>
+        <script src="static//js/paginas/projecao_contas/projecao_contas.js"></script>
+        <script src="static//js/paginas/projecao_contas/projecao_contas_teste.js"></script>
 <?php require_once 'templates/footer.php'; ?>
