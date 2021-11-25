@@ -1,9 +1,9 @@
 <?php
 
-$arquivo = $_GET['arquivo'];
-$diretorio = $_GET['diretorio'];
+require_once 'src/service/FileUtils.php';
 
-header('Content-Type: application/csv');
-header('Content-Disposition: attachment; filename=' . $arquivo);
-header('Pragma: no-cache');
-readfile($diretorio . $arquivo);
+$arquivo = $_GET['arquivo'];
+$tipo = $_GET['tipo'];
+$projeto = $_GET['projeto'];
+$diretorio = FileUtils::getProjetoDir($tipo, $projeto);
+FileUtils::download($diretorio, $arquivo);

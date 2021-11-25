@@ -1,6 +1,7 @@
 <?php
     require_once 'templates/header.php';
     require_once 'src/config/Config.php';
+    require_once 'src/service/FileUtils.php';
 ?>
 
     <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
@@ -10,14 +11,9 @@
 
 <?php
     $tipo = $_GET['tipo'];
-    if($tipo == 'backup'){
-        $diretorio = Config::getBackupPath() . 'planilha_financeira/';
-    } else if($tipo == 'builds') {
-        $projeto = $_GET['projeto'];
-        $diretorio = Config::getBuildPath() . $projeto . '/';
-    }
-
-    $arquivos = scandir($diretorio, 1);
+    $projeto = $_GET['projeto'];
+    $diretorio = FileUtils::getProjetoDir($tipo, $projeto);
+    $arquivos = FileUtils::getArquivos($diretorio);
     foreach ($arquivos as $arquivo){
         if($arquivo != '.' && $arquivo != '..')
         echo '<tr>' .
