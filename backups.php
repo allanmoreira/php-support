@@ -6,7 +6,7 @@
             <tbody>
 
 <?php
-    $arquivos = scandir('/var/www/html/backups/planilha_financeira');
+    $arquivos = scandir('/var/www/html/backups/planilha_financeira', 1);
     foreach ($arquivos as $arquivo){
         if($arquivo != '.' && $arquivo != '..')
         echo '<tr>' .
