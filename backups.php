@@ -11,7 +11,10 @@
         if($arquivo != '.' && $arquivo != '..')
         echo '<tr>' .
                 '<td>'. $arquivo .'</td>' .
-                '<td>'. date("d/f/Y H:i:s", filemtime($arquivo)) . '</td>' .
+                '<td>'. date("d f Y H:i:s", filemtime($arquivo)) . '</td>' .
+                '<td>'. date("d F Y H:i:s", filemtime($arquivo)) . '</td>' .
+                '<td>'. date("d m Y H:i:s", filemtime($arquivo)) . '</td>' .
+                '<td>'. date("d M Y H:i:s", filemtime($arquivo)) . '</td>' .
             '</tr>';
     }
 ?>
