@@ -11,9 +11,9 @@ $BACKUP_DIR='/var/www/html/backups/$DATABASE';
 $BACKUP_NAME=$DATE.'-backup.sql';
 
 $response = array();
-$saida = shell_exec('sh PGPASSWORD="mbrasilia0911" pg_dump -U postgres $DB_PARAM $DATABASE > $BACKUP_NAME');
+$saida = shell_exec('sh PGPASSWORD="mbrasilia0911" pg_dump -U postgres $DB_PARAM $DATABASE > $BACKUP_NAME' . ' 2>&1');
 array_push($response, $saida);
-$saida = shell_exec('sh mv ' . $BACKUP_NAME . ' ' . $BACKUP_DIR);
+$saida = shell_exec('sh mv ' . $BACKUP_NAME . ' ' . $BACKUP_DIR . ' 2>&1');
 array_push($response, $saida);
 echo json_encode($response);
 /*
