@@ -10,7 +10,7 @@ class FileUtils {
 
     public static function getProjetoDir($tipo, $projeto){
         $diretorio = '';
-        if($tipo == 'backup'){
+        if($tipo == 'backups'){
             $diretorio = Config::getBackupPath();
         } else if($tipo == 'builds') {
             $diretorio = Config::getBuildPath();
