@@ -13,6 +13,14 @@ $response = array();
 $data = shell_exec("sh $DATE_COMMAND  2>&1");
 $BACKUP_NAME=$data.'-backup.sql';
 
+
+echo '------------------------------------------';
+echo $data . '<br>';
+echo $BACKUP_NAME . '<br>';
+echo "sh PGPASSWORD='mbrasilia0911' pg_dump -U postgres $DB_PARAM $banco > $BACKUP_NAME 2>&1" . '<br>';
+echo '------------------------------------------';
+
+
 $saida = shell_exec("sh PGPASSWORD='mbrasilia0911' pg_dump -U postgres $DB_PARAM $banco > $BACKUP_NAME 2>&1");
 array_push($response, $saida);
 
