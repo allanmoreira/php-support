@@ -29,7 +29,7 @@ array_push($response, $saida);
 
 echo json_encode($response);
 */
-$saida = shell_exec('sh sudo -S ' . Config::getScriptBackup() . ' ' . $banco . ' 2>&1');
+$saida = shell_exec('sudo -S ./' . Config::getScriptBackup() . ' ' . $banco . ' 2>&1');
 $split = explode('-- ', $saida);
 foreach ($split as $linha){
     str_replace($linha, '\n', '');
