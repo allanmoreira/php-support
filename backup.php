@@ -10,21 +10,21 @@ $DATE_COMMAND='`date +%Y-%m-%d-%H-%M-%S`';
 $BACKUP_DIR='/var/www/html/backups/$DATABASE';
 
 $response = array();
-$data = shell_exec("sh $DATE_COMMAND  2>&1");
+$data = shell_exec("$DATE_COMMAND  2>&1");
 $BACKUP_NAME=$data.'-backup.sql';
 
 
 echo '------------------------------------------<br>';
-echo $data . '<br>';
-echo $BACKUP_NAME . '<br>';
+echo 'DATA: ' . $data . '<br>';
+echo 'BACKUP_NAME: ' . $BACKUP_NAME . '<br>';
 echo "sh PGPASSWORD='mbrasilia0911' pg_dump -U postgres $DB_PARAM $banco > $BACKUP_NAME 2>&1" . '<br>';
 echo '------------------------------------------<br>';
 
 
-$saida = shell_exec("sh PGPASSWORD='mbrasilia0911' pg_dump -U postgres $DB_PARAM $banco > $BACKUP_NAME 2>&1");
+$saida = shell_exec("PGPASSWORD='mbrasilia0911' pg_dump -U postgres $DB_PARAM $banco > $BACKUP_NAME 2>&1");
 array_push($response, $saida);
 
-$saida = shell_exec("sh mv $BACKUP_NAME $BACKUP_DIR 2>&1");
+$saida = shell_exec("mv $BACKUP_NAME $BACKUP_DIR 2>&1");
 array_push($response, $saida);
 
 echo json_encode($response);
