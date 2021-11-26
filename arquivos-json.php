@@ -5,4 +5,9 @@ $tipo = $_GET['tipo'];
 $projeto = $_GET['projeto'];
 $diretorio = FileUtils::getProjetoDir($tipo, $projeto);
 $arquivos = FileUtils::getArquivos($diretorio);
-echo json_encode($arquivos);
+$retorno = array();
+foreach ($arquivos as $arquivo){
+    if($arquivo != '.' && $arquivo != '..')
+        array_push($retorno, $arquivo);
+}
+echo json_encode($retorno);
