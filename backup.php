@@ -11,7 +11,7 @@ $BACKUP_DIR='/var/www/html/backups/$DATABASE';
 
 $response = array();
 $data = shell_exec("$DATE_COMMAND  2>&1");
-$BACKUP_NAME=$data.'-backup.sql';
+$BACKUP_NAME=trim($data).'-backup.sql';
 
 
 echo '------------------------------------------<br>';
