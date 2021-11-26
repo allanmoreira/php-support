@@ -6,7 +6,7 @@ $banco = $_GET['banco'];
 
 $DB_NAME='planilha_financeira';
 $DB_PARAM='--clean --if-exists --create'; # --inserts'
-$DATE_COMMAND=`date +%Y-%m-%d-%H-%M-%S`;
+$DATE_COMMAND='`date +%Y-%m-%d-%H-%M-%S`';
 $BACKUP_DIR='/var/www/html/backups/$DATABASE';
 
 $response = array();
