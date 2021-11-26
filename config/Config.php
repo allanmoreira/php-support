@@ -30,5 +30,9 @@ class Config {
         return array('planilha-financeira-ms', 'planilha-financeira-web');
     }
 
+    public static function getScriptBackup(){
+        return '/home/usr_pub/backup_bd/backup.sh';
+    }
+
 
 }
