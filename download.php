@@ -1,6 +1,6 @@
 <?php
 
-require_once 'src/service/FileUtils.php';
+require_once 'service/FileUtils.php';
 
 $arquivo = $_GET['arquivo'];
 $tipo = $_GET['tipo'];

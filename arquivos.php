@@ -1,7 +1,7 @@
 <?php
     require_once 'templates/header.php';
-    require_once 'src/config/Config.php';
-    require_once 'src/service/FileUtils.php';
+    require_once 'config/Config.php';
+    require_once 'service/FileUtils.php';
 ?>
 
     <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
@@ -17,7 +17,7 @@
     foreach ($arquivos as $arquivo){
         if($arquivo != '.' && $arquivo != '..')
         echo '<tr>' .
-                '<td><a href="src/controller/download.php?tipo='.$tipo.'&projeto='. $projeto.'&arquivo='. $arquivo.'">'. $arquivo .'</a></td>' .
+                '<td><a href="download.php?tipo='.$tipo.'&projeto='. $projeto.'&arquivo='. $arquivo.'">'. $arquivo .'</a></td>' .
             '</tr>';
     }
 ?>

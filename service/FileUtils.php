@@ -1,5 +1,7 @@
 <?php
 
+require_once ('config/Config.php');
+
 class FileUtils {
 
     public static function getArquivos($diretorio){
