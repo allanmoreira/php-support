@@ -7,11 +7,13 @@ class FileUtils {
     }
 
     public static function getProjetoDir($tipo, $projeto){
+        $diretorio = '';
         if($tipo == 'backup'){
-            return Config::getBackupPath() . 'planilha_financeira/';
+            $diretorio = Config::getBackupPath();
         } else if($tipo == 'builds') {
-            return Config::getBuildPath() . $projeto . '/';
+            $diretorio = Config::getBuildPath();
         }
+        return $diretorio . $projeto . '/';
     }
 
     public static function download($diretorio, $arquivo){
