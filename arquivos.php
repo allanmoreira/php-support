@@ -1,6 +1,5 @@
 <?php
     require_once 'templates/header.php';
-    require_once 'config/Config.php';
     require_once 'service/FileUtils.php';
 ?>
 
