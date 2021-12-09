@@ -6,8 +6,22 @@ function dataValida(data) {
     return true;
 }
 
-function dataAtual(){
+function dataAtualString(){
     return converteDataParaString(new Date());
+}
+
+function dataAtual(){
+    return new Date();
+}
+
+function somaDiasDaData(data, dias){
+    data.setDate(data.getDate() + parseInt(dias));
+    return data;
+}
+
+function subtraiDiasDaData(data, dias){
+    data.setDate(data.getDate() - parseInt(dias));
+    return data;
 }
 
 function converteDataParaStringComDivisor(data, divisor) {

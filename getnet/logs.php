@@ -43,6 +43,13 @@
                 <h4><strong>Endpoint</strong></h4>
                 <label>EC</label>
                 <input id="ec" class="form-control" placeholder="ec">
+                <label>Período</label>
+                <select id="periodo" class="form-control">
+                    <option value="0">Hoje</option>
+                    <option value="15">15 dias</option>
+                    <option value="30">30 dias</option>
+                    <option value="90">90 dias</option>
+                </select>
                 <label>Events</label>
                 <select id="events" class="form-control">
                     <option value="">Todos</option>
