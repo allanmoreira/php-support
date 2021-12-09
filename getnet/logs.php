@@ -56,6 +56,7 @@
                 </select>
                 <br>
                 <button class="btn btn-primary" id="btn_executar">Executar</button>
+                <button class="btn btn-success" id="btn_update_event_types">Atualizar Event Types</button>
             </div>
         </div>
 
@@ -84,6 +85,38 @@
                 </thead>
                 <tbody></tbody>
             </table>
+        </div>
+
+        <div id="modal_detalhes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"><strong>Detalhes Log</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <h4><strong>Básico</strong></h4>
+                            <div class="row">
+                                <div class="col-md-3 "><strong>Estabelecimento: </strong><span id="estabelecimento"></span></div>
+                                <div class="col-md-3 col-md-offset-3"><strong>Usuário: </strong><span id="usuario"></span></div>
+                            </div>
+                            <br>
+                            <h4><strong>Request</strong></h4>
+                            <div class="row">
+                                <div class="col-md-6"><strong>Service: </strong><span id="service"></span></div>
+                                <div class="col-md-6"><strong>Path: </strong><span id="path"></span></div>
+                            </div>
+                            <br>
+                            <h4><strong>Response</strong></h4>
+                            <div class="row">
+                                <div class="col-md-12"><strong>Response: </strong><p id="response"></p></div>
+                                <div class="col-md-6"><strong>Stack Info: </strong><p id="stack_info"></p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

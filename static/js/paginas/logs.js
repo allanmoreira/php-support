@@ -3,13 +3,22 @@ var mensagem = $('#mensagem');
 var ec = $('#ec');
 var events = $('#events');
 var periodo = $('#periodo');
+var btn_update_event_types = $('#btn_update_event_types');
 var tabela = $('#tabela');
+var modal_detalhes = $('#modal_detalhes');
+var estabelecimento = $('#estabelecimento');
+var usuario = $('#usuario');
+var service = $('#service');
+var path = $('#path');
+var response = $('#response');
+var stack_info = $('#stack_info');
 var minDate;
 var maxDate;
 
 $(function(){
     getConfigs();
     ec.val('281534');
+    periodo.val('15');
     eventsTypes();
 });
 
@@ -21,6 +30,10 @@ $('.form-control').keydown(function (e){
 
 btn_executar.click(function(){
     consulta();
+});
+
+btn_update_event_types.click(function(){
+    eventsTypes();
 });
 
 function eventsTypes() {
@@ -52,18 +65,28 @@ function eventsTypes() {
     });
 }
 
-function consulta() {
+function consulta(id) {
     getPeriodo();
-    var data = {
-        'size': 10,
-        'page': 0,
-        'min-date': minDate,
-        'max-date': maxDate,
-        'merchant-id': +ec.val()
-    };
-    var type = events.val();
-    if(type !== '')
-        data.type = events.val();
+    var buscaPorId = id !== undefined;
+    var data;
+    if(buscaPorId) {
+        data = {
+            'id': id,
+            'size': 1,
+            'page': 0
+        };
+        var type = events.val();
+        if (type !== '')
+            data.type = events.val();
+    } else {
+        data = {
+            'size': 10,
+            'page': 0,
+            'min-date': minDate,
+            'max-date': maxDate,
+            'merchant-id': +ec.val()
+        };
+    }
 
     $.ajax({
         url: URL.MANAGEMENT[ambiente.val()] + '/v1/audit/events',
@@ -77,8 +100,12 @@ function consulta() {
         success: function (response) {
             abreNotificacao('success', 'Consulta realizada com sucesso!');
             mensagem.html(response.status.description);
-            $('#tabela tbody > tr').remove();
-            preencheTabela(response.data.content);
+            if(buscaPorId){
+                preencheModal(response.data.content[0]);
+            } else {
+                $('#tabela tbody > tr').remove();
+                preencheTabela(response.data.content);
+            }
         },
         error: function (response) {
             if(response.status === 401){
@@ -93,15 +120,16 @@ function consulta() {
 function preencheTabela(lista_itens){
     var html = '';
     lista_itens.forEach(function (item){
+        var status = item.responseStatus.value;
         html +=
             '<tr>' +
-                '<td class="text-center"></td>' +
+                '<td class="text-center"><button class="btn btn-sm ' + (status === '0' ? 'btn-success' : 'btn-danger') + ' btn-detalhes" data-id="' + item.id + '">Detalhes</button></td>' +
                 '<td class="text-center">' + getDataFromTimestamp(item.date) + '</td>' +
                 '<td class="text-center">' + getHoraFromTimestamp(item.date) + '</td>' +
                 '<td class="text-center">' + item.type + '</td>' +
                 '<td class="text-center">' + item.targetMerchant + '</td>' +
                 '<td class="text-center">' + item.sourceUsername + '</td>' +
-                '<td class="text-center">' + item.responseStatus.value + '</td>' +
+                '<td class="text-center">' + status + '</td>' +
                 '<td class="text-center">' + item.responseStatus.description + '</td>' +
             '</tr>';
     });
@@ -122,3 +150,23 @@ function toTimestampDate(data){
     var dia = split[0];
     return ano + '-' + mes + '-' + dia;
 }
+
+function preencheModal(evento){
+    estabelecimento.html(evento.targetMerchant);
+    usuario.html(evento.sourceUsername);
+    service.html(
+        evento.service.name + '.' +
+        evento.service.controller + '.' +
+        evento.service.method + '@' +
+        evento.service.version
+    );
+    path.html(evento.service.path);
+    response.html(JSON.stringify(evento.responseStatus));
+    stack_info.html(evento.stackInformation);
+    modal_detalhes.modal('show');
+}
+
+$(document).on("click", ".btn-detalhes", function() {
+    var id = $(this).attr("data-id");
+    consulta(id);
+});
