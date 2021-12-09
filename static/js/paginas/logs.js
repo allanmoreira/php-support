@@ -110,7 +110,7 @@ function preencheTabela(lista_itens){
 
 function getPeriodo(){
     var hoje = dataAtual();
-    maxDate = toTimestampDate(dataAtual()) + 'T23:59:59.999-03:00';
+    maxDate = toTimestampDate(hoje) + 'T23:59:59.999-03:00';
     var dataInicio = subtraiDiasDaData(hoje, periodo.val());
     minDate = toTimestampDate(dataInicio) + 'T00:00:00.000-03:00';
 }
