@@ -57,10 +57,10 @@
                             Getnet<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="getnet/calculadora_vendas.html">Calculadora Vendas</a></li>
-                            <li><a href="getnet/extrato_servicos.html">Extrato Serviços</a></li>
-                            <li><a href="getnet/rate_limit.html">Rate Limit</a></li>
-                            <li><a href="getnet/gestao_usuario.html">Gestão Usuário</a></li>
+                            <li><a href="getnet/calculadora_vendas.php">Calculadora Vendas</a></li>
+                            <li><a href="getnet/extrato_servicos.php">Extrato Serviços</a></li>
+                            <li><a href="getnet/rate_limit.php">Rate Limit</a></li>
+                            <li><a href="getnet/gestao_usuario.php">Gestão Usuário</a></li>
                         </ul>
                     </li>
 
