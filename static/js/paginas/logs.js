@@ -1,16 +1,13 @@
 var mensagem = $('#mensagem');
 
-var valor = $('#valor');
-var cartao = $('#cartao');
 var ec = $('#ec');
+var events = $('#events');
 var tabela = $('#tabela');
 
 $(function(){
     getConfigs();
-    valor.maskMoney();
-    ec.val('51161828');
-    cartao.val('154');
-    valor.val(converteFloatParaMoeda('2505'));
+    ec.val('281534');
+    eventsTypes();
 });
 
 $('.form-control').keydown(function (e){
@@ -23,19 +20,56 @@ btn_executar.click(function(){
     consulta();
 });
 
-function consulta() {
+function eventsTypes() {
     $.ajax({
-        url: URL.MANAGEMENT[ambiente.val()] + '/v1/audit/events?size=10&page=0&min-date=2021-11-25T00:00:00.000-03:00&max-date=2021-12-09T23:59:59.999-03:00&merchant-id=281534',
+        url: URL.MANAGEMENT[ambiente.val()] + '/v1/audit/events/event-types',
         async: true,
         type: 'GET',
         dataType: 'json',
         beforeSend: function (xhr) {
             xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
         },
-        data: {
-            valor : converteMoedaParaFloat(valor.val(), 2),
-            cartao: cartao.val()
+        success: function (response) {
+            abreNotificacao('success', 'Consulta realizada com sucesso!');
+            mensagem.html(response.status.description);
+            response.data.forEach(function (item) {
+                events.append($('<option>', {
+                    value: item,
+                    text: item
+                }));
+            });
         },
+        error: function (response) {
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        }
+    });
+}
+
+function consulta() {
+    var data = {
+        'size': 10,
+        'page': 0,
+        'min-date': '2021-11-25T00:00:00.000-03:00',
+        'max-date': '2021-12-09T23:59:59.999-03:00',
+        'merchant-id': +ec.val()
+    };
+    var type = events.val();
+    if(type !== '')
+        data.type = events.val();
+
+    $.ajax({
+        url: URL.MANAGEMENT[ambiente.val()] + '/v1/audit/events',
+        async: true,
+        type: 'GET',
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
+        },
+        data: data,
         success: function (response) {
             abreNotificacao('success', 'Consulta realizada com sucesso!');
             mensagem.html(response.status.description);

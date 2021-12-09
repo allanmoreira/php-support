@@ -43,10 +43,10 @@
                 <h4><strong>Endpoint</strong></h4>
                 <label>EC</label>
                 <input id="ec" class="form-control" placeholder="ec">
-                <label>Cartão</label>
-                <input id="cartao" class="form-control" placeholder="cartao">
-                <label>Valor</label>
-                <input id="valor" class="form-control" placeholder="valor" data-thousands="." data-decimal="," data-prefix="R$ ">
+                <label>Events</label>
+                <select id="events" class="form-control">
+                    <option value="">Todos</option>
+                </select>
                 <br>
                 <button class="btn btn-primary" id="btn_executar">Executar</button>
             </div>
