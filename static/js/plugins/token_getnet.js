@@ -4,7 +4,7 @@ var btn_executar = $('#btn_executar');
 var LOCAL_STORAGE_TOKEN = 'TOKEN';
 
 var LOGIN_REDE = 'am23000';
-var SENHA_REDE = 'macaquinho.5';
+var SENHA_REDE = 'macaquinho.1';
 var LOGIN = '04493259035';
 var SENHA = 'getnet@123';
 // var LOGIN = '02111023000';
