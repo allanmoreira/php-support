@@ -57,6 +57,7 @@
                             Getnet<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a href="getnet/logs.php">Logs</a></li>
                             <li><a href="getnet/calculadora_vendas.php">Calculadora Vendas</a></li>
                             <li><a href="getnet/extrato_servicos.php">Extrato Serviços</a></li>
                             <li><a href="getnet/rate_limit.php">Rate Limit</a></li>

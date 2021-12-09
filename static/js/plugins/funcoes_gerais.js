@@ -265,3 +265,15 @@ function converteTimestampParaString(data){
     return data + ' ' + split[1].substring(0,12);
 }
 
+function getDataFromTimestamp(data){
+    var split = data.split('T');
+    return converteDataParaStringComDivisor(split[0], '-');
+}
+
+function getHoraFromTimestamp(data){
+    var split = data.split('T');
+    return split[1].split('-')[0];
+    // var data = converteDataParaStringComDivisor(split[0], '-');
+    // return data + ' ' + split[1].substring(0,12);
+}
+
