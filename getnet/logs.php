@@ -106,12 +106,13 @@
                             <div class="row">
                                 <div class="col-md-6"><strong>Service: </strong><span id="service"></span></div>
                                 <div class="col-md-6"><strong>Path: </strong><span id="path"></span></div>
+                                <div class="col-md-12"><strong>Detail: </strong><span id="detail"></span></div>
                             </div>
                             <br>
                             <h4><strong>Response</strong></h4>
                             <div class="row">
-                                <div class="col-md-12"><strong>Response: </strong><p id="response"></p></div>
-                                <div class="col-md-6"><strong>Stack Info: </strong><p id="stack_info"></p></div>
+                                <div class="col-md-12"><strong>Response: </strong><pre id="response"></pre></div>
+                                <div class="col-md-12"><strong>Stack Info: </strong><pre id="stack_info"></pre></div>
                             </div>
                         </div>
                     </div>

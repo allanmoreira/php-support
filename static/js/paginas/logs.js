@@ -12,6 +12,7 @@ var service = $('#service');
 var path = $('#path');
 var response = $('#response');
 var stack_info = $('#stack_info');
+var detail = $('#detail');
 var minDate;
 var maxDate;
 
@@ -151,7 +152,18 @@ function toTimestampDate(data){
     return ano + '-' + mes + '-' + dia;
 }
 
+function limpaModal(){
+    estabelecimento.html('');
+    usuario.html('');
+    service.html('');
+    path.html('');
+    response.html('');
+    stack_info.html('');
+    detail.html('');
+}
+
 function preencheModal(evento){
+    limpaModal();
     estabelecimento.html(evento.targetMerchant);
     usuario.html(evento.sourceUsername);
     service.html(
@@ -161,8 +173,15 @@ function preencheModal(evento){
         evento.service.version
     );
     path.html(evento.service.path);
-    response.html(JSON.stringify(evento.responseStatus));
-    stack_info.html(evento.stackInformation);
+    response.html(JSON.stringify(evento.responseStatus, undefined, 4));
+    var stack_info_html;
+    try{
+        stack_info_html = JSON.stringify(JSON.parse(evento.stackInformation), undefined, 4);
+    } catch (e ){
+        stack_info_html = evento.stackInformation;
+    }
+    stack_info.html(stack_info_html);
+    detail.html(evento.detail);
     modal_detalhes.modal('show');
 }
 
