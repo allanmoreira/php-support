@@ -129,7 +129,7 @@
                             <h4><strong>Response</strong></h4>
                             <div class="row">
                                 <div class="col-md-12"><strong>Response: </strong><pre id="response"></pre></div>
-                                <div class="col-md-12"><strong>Stack Info: </strong><pre id="stack_info" style="height: 300px"></pre></div>
+                                <div class="col-md-12"><strong>Stack Info: </strong><pre id="stack_info" style="max-height: 300px"></pre></div>
                             </div>
                         </div>
                     </div>

@@ -195,7 +195,7 @@ function preencheModal(evento){
     var stack_info_html;
     try{
         stack_info_html = JSON.stringify(JSON.parse(evento.stackInformation), undefined, 4);
-    } catch (e ){
+    } catch (e){
         stack_info_html = evento.stackInformation;
     }
     stack_info.html(stack_info_html);
