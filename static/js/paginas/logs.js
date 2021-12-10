@@ -22,6 +22,7 @@ $(function(){
     getConfigs();
     ec.val('281534');
     periodo.val('15');
+    itens_pagina.val('50');
     eventsTypes();
 });
 
