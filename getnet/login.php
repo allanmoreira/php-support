@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+<div class="col-lg-2">
     <h4><strong>Token</strong></h4>
     <label>Auth</label>
     <select id="auth" class="form-control">

@@ -8,6 +8,8 @@ var tabela = $('#tabela');
 var modal_detalhes = $('#modal_detalhes');
 var estabelecimento = $('#estabelecimento');
 var usuario = $('#usuario');
+var pagina = $('#pagina');
+var itens_pagina = $('#itens_pagina');
 var service = $('#service');
 var path = $('#path');
 var response = $('#response');
@@ -81,8 +83,8 @@ function consulta(id) {
             data.type = events.val();
     } else {
         data = {
-            'size': 10,
-            'page': 0,
+            'size': itens_pagina.val(),
+            'page': pagina.val(),
             'min-date': minDate,
             'max-date': maxDate,
             'merchant-id': +ec.val()
@@ -104,6 +106,18 @@ function consulta(id) {
             if(buscaPorId){
                 preencheModal(response.data.content[0]);
             } else {
+                var totalPages = parseInt(response.data.totalPages);
+                pagina.empty();
+                pagina.append($('<option>', {
+                    value: 0,
+                    text: 0
+                }));
+                for(let i=1; i<totalPages;i++) {
+                    pagina.append($('<option>', {
+                        value: i,
+                        text: i
+                    }));
+                }
                 $('#tabela tbody > tr').remove();
                 preencheTabela(response.data.content);
             }

@@ -39,7 +39,7 @@
         <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
             <?php require_once 'login.php'; ?>
 
-            <div class="col-lg-6">
+            <div class="col-lg-2">
                 <h4><strong>Endpoint</strong></h4>
                 <label>EC</label>
                 <input id="ec" class="form-control" placeholder="ec">
@@ -57,6 +57,21 @@
                 <br>
                 <button class="btn btn-primary" id="btn_executar">Executar</button>
                 <button class="btn btn-success" id="btn_update_event_types">Atualizar Event Types</button>
+            </div>
+
+            <div class="col-lg-2">
+                <h4 style="color: white">ALINHAR</h4>
+                <label>Pagina</label>
+                <select id="pagina" class="form-control">
+                    <option value="0">0</option>
+                </select>
+                <label>Itens por Página</label>
+                <select id="itens_pagina" class="form-control">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
             </div>
         </div>
 
