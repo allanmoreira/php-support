@@ -140,6 +140,7 @@ function preencheTabela(lista_itens){
         html +=
             '<tr>' +
                 '<td class="text-center"><button class="btn btn-sm ' + (status === '0' ? 'btn-success' : 'btn-danger') + ' btn-detalhes" data-id="' + item.id + '">Detalhes</button></td>' +
+                '<td class="text-center">' + item.id + '</td>' +
                 '<td class="text-center">' + getDataFromTimestamp(item.date) + '</td>' +
                 '<td class="text-center">' + getHoraFromTimestamp(item.date) + '</td>' +
                 '<td class="text-center">' + item.type + '</td>' +

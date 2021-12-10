@@ -89,6 +89,7 @@
                 <thead>
                     <tr>
                         <th class="text-center">#</th>
+                        <th class="text-center">ID</th>
                         <th class="text-center">Data</th>
                         <th class="text-center">Hora</th>
                         <th class="text-center">Tipo</th>
