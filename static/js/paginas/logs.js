@@ -6,6 +6,7 @@ var periodo = $('#periodo');
 var btn_update_event_types = $('#btn_update_event_types');
 var tabela = $('#tabela');
 var modal_detalhes = $('#modal_detalhes');
+var id = $('#id');
 var estabelecimento = $('#estabelecimento');
 var usuario = $('#usuario');
 var pagina = $('#pagina');
@@ -180,6 +181,7 @@ function limpaModal(){
 
 function preencheModal(evento){
     limpaModal();
+    id.html(evento.id);
     estabelecimento.html(evento.targetMerchant);
     usuario.html(evento.sourceUsername);
     service.html(

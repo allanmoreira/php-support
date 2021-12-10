@@ -114,6 +114,7 @@
                         <div class="modal-body">
                             <h4><strong>Básico</strong></h4>
                             <div class="row">
+                                <div class="col-md-3 "><strong>ID: </strong><span id="id"></span></div>
                                 <div class="col-md-3 "><strong>Estabelecimento: </strong><span id="estabelecimento"></span></div>
                                 <div class="col-md-3 col-md-offset-3"><strong>Usuário: </strong><span id="usuario"></span></div>
                             </div>
@@ -128,7 +129,7 @@
                             <h4><strong>Response</strong></h4>
                             <div class="row">
                                 <div class="col-md-12"><strong>Response: </strong><pre id="response"></pre></div>
-                                <div class="col-md-12"><strong>Stack Info: </strong><pre id="stack_info"></pre></div>
+                                <div class="col-md-12"><strong>Stack Info: </strong><pre id="stack_info" style="height: 300px"></pre></div>
                             </div>
                         </div>
                     </div>
