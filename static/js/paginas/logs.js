@@ -80,9 +80,6 @@ function consulta(id) {
             'size': 1,
             'page': 0
         };
-        var type = events.val();
-        if (type !== '')
-            data.type = events.val();
     } else {
         data = {
             'size': itens_pagina.val(),
@@ -91,6 +88,9 @@ function consulta(id) {
             'max-date': maxDate,
             'merchant-id': +ec.val()
         };
+        var type = events.val();
+        if (type !== '')
+            data.type = events.val();
     }
 
     $.ajax({
