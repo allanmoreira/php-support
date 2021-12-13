@@ -61,6 +61,12 @@
 
             <div class="col-lg-2">
                 <h4 style="color: white">ALINHAR</h4>
+                <label>Status</label>
+                <select id="status_log" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="sucesso">Sucesso</option>
+                    <option value="falha">Falha</option>
+                </select>
                 <label>Pagina</label>
                 <select id="pagina" class="form-control">
                     <option value="0">0</option>

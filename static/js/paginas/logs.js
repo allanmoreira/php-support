@@ -9,6 +9,7 @@ var modal_detalhes = $('#modal_detalhes');
 var id = $('#id');
 var estabelecimento = $('#estabelecimento');
 var usuario = $('#usuario');
+var status_log = $('#status_log');
 var pagina = $('#pagina');
 var itens_pagina = $('#itens_pagina');
 var service = $('#service');
@@ -84,6 +85,7 @@ function consulta(id) {
         data = {
             'size': itens_pagina.val(),
             'page': pagina.val(),
+            'status': status_log.val(),
             'min-date': minDate,
             'max-date': maxDate,
             'merchant-id': +ec.val()
