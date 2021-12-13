@@ -89,7 +89,6 @@ function consulta(id) {
             'min-date': minDate,
             'max-date': maxDate
         };
-        console.log('EC: ' + '[' + ec.val() + ']');
         var type = events.val();
         if (type !== '')
             data.type = events.val();
