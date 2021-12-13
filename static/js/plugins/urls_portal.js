@@ -76,21 +76,45 @@ var KEYCLOAK = {
 };
 
 var SERVICO  = {
-    EXTRATOS : {
-        LOCAL : 'http://localhost:8021',
-        OUTROS : '/services/mc-extratos'
+    ANALISE_MERCADO : {
+        LOCAL : 'http://localhost:8023',
+        OUTROS : '/services/mc-analise-mercado'
     },
-    PRODUTOS : {
-        LOCAL : 'http://localhost:8022',
-        OUTROS : '/services/mc-produtos'
+    ANTECIPACOES : {
+        LOCAL : 'http://localhost:8020',
+        OUTROS : '/services/mc-antecipacoes'
     },
     CADASTRO : {
         LOCAL : 'http://localhost:8016',
         OUTROS : '/services/mc-cadastro'
     },
+    CONTEUDO : {
+        LOCAL : 'http://localhost:8022',
+        OUTROS : '/services/mc-conteudo'
+    },
+    EXTRATOS : {
+        LOCAL : 'http://localhost:8021',
+        OUTROS : '/services/mc-extratos'
+    },
     MANAGEMENT : {
         LOCAL : 'http://localhost:8008',
         OUTROS : '/services/mc-management'
+    },
+    PAYMENT_LINKS : {
+        LOCAL : 'http://localhost:8034',
+        OUTROS : '/services/mc-payment-links'
+    },
+    PRODUTOS : {
+        LOCAL : 'http://localhost:8022',
+        OUTROS : '/services/mc-produtos'
+    },
+    SOLICITACOES : {
+        LOCAL : 'http://localhost:8019',
+        OUTROS : '/services/mc-solicitacoes'
+    },
+    VENDAS : {
+        LOCAL : 'http://localhost:8018',
+        OUTROS : '/services/mc-vendas'
     }
 };
 
