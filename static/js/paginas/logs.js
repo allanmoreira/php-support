@@ -87,12 +87,15 @@ function consulta(id) {
             'page': pagina.val(),
             'status': status_log.val(),
             'min-date': minDate,
-            'max-date': maxDate,
-            'merchant-id': +ec.val()
+            'max-date': maxDate
         };
+        console.log('EC: ' + '[' + ec.val() + ']');
         var type = events.val();
         if (type !== '')
             data.type = events.val();
+        var codEc = ec.val();
+        if (codEc !== '')
+            data['merchant-id'] = codEc;
     }
 
     $.ajax({
