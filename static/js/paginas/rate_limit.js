@@ -46,8 +46,14 @@ function consulta(url, method, ordem) {
         },
         data: null,
         success: function (response) {
-            abreNotificacao('success', 'Consulta realizada com sucesso!');
-            preencheTabela(ordem, response.status.description);
+            if(status === 200) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                preencheTabela(ordem, response.status.description);
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
         },
         error: function (response) {
             if(response.status === 401){

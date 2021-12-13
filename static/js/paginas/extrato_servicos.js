@@ -79,25 +79,31 @@ function consulta() {
             pago : true
         },
         success: function (response) {
-            abreNotificacao('success', 'Consulta realizada com sucesso!');
-            $('#tabela_resumo_novo tbody > tr').remove();
-            $('#tabela_resumo tbody > tr').remove();
-            $('#tabela_detalhes tbody > tr').remove();
-            mensagem.html('Mensagem: ');
-            if(response.data !== undefined && response.data.resumo !== undefined) {
-                if(response.data.msgRetorno !== undefined)
-                    mensagem.html('Mensagem: <span style="color: red" id="mensagem">'+response.data.msgRetorno+'</span>');
+            if(status === 200) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                $('#tabela_resumo_novo tbody > tr').remove();
+                $('#tabela_resumo tbody > tr').remove();
+                $('#tabela_detalhes tbody > tr').remove();
+                mensagem.html('Mensagem: ');
+                if (response.data !== undefined && response.data.resumo !== undefined) {
+                    if (response.data.msgRetorno !== undefined)
+                        mensagem.html('Mensagem: <span style="color: red" id="mensagem">' + response.data.msgRetorno + '</span>');
 
-                var lista = response.data.totalizadores.totalizadoresPorTipo;
-                $.each(lista, function (i) {
-                    preencheTabelaResumonovo(lista[i]);
-                });
+                    var lista = response.data.totalizadores.totalizadoresPorTipo;
+                    $.each(lista, function (i) {
+                        preencheTabelaResumonovo(lista[i]);
+                    });
 
-                lista = response.data.resumo;
-                $.each(lista, function (i) {
-                    preencheTabelaResumo(lista[i]);
-                    preencheTabelaDetalhes(i, lista[i]);
-                });
+                    lista = response.data.resumo;
+                    $.each(lista, function (i) {
+                        preencheTabelaResumo(lista[i]);
+                        preencheTabelaDetalhes(i, lista[i]);
+                    });
+                }
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
             }
         },
         error: function (response) {

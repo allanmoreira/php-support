@@ -37,11 +37,17 @@ function consulta() {
             cartao: cartao.val()
         },
         success: function (response) {
-            abreNotificacao('success', 'Consulta realizada com sucesso!');
-            mensagem.html(response.status.description);
-            $('#tabela thead > tr').remove();
-            $('#tabela tbody > tr').remove();
-            preencheTabela(response.data.tecnologias, organizaRetorno(response.data.tecnologias));
+            if(status === 200) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                mensagem.html(response.status.description);
+                $('#tabela thead > tr').remove();
+                $('#tabela tbody > tr').remove();
+                preencheTabela(response.data.tecnologias, organizaRetorno(response.data.tecnologias));
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
         },
         error: function (response) {
             if(response.status === 401){

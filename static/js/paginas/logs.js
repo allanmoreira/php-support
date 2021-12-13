@@ -52,14 +52,21 @@ function eventsTypes() {
             xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
         },
         success: function (response) {
-            abreNotificacao('success', 'Consulta realizada com sucesso!');
-            mensagem.html(response.status.description);
-            response.data.forEach(function (item) {
-                events.append($('<option>', {
-                    value: item,
-                    text: item
-                }));
-            });
+            var status = response.data.status;
+            if(status === 200) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                mensagem.html(response.status.description);
+                response.data.forEach(function (item) {
+                    events.append($('<option>', {
+                        value: item,
+                        text: item
+                    }));
+                });
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
         },
         error: function (response) {
             if(response.status === 401){
@@ -107,25 +114,31 @@ function consulta(id) {
         },
         data: data,
         success: function (response) {
-            abreNotificacao('success', 'Consulta realizada com sucesso!');
-            mensagem.html(response.status.description);
-            if(buscaPorId){
-                preencheModal(response.data.content[0]);
-            } else {
-                var totalPages = parseInt(response.data.totalPages);
-                pagina.empty();
-                pagina.append($('<option>', {
-                    value: 0,
-                    text: 0
-                }));
-                for(let i=1; i<totalPages;i++) {
+            if(status === 200) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                mensagem.html(response.status.description);
+                if (buscaPorId) {
+                    preencheModal(response.data.content[0]);
+                } else {
+                    var totalPages = parseInt(response.data.totalPages);
+                    pagina.empty();
                     pagina.append($('<option>', {
-                        value: i,
-                        text: i
+                        value: 0,
+                        text: 0
                     }));
+                    for (let i = 1; i < totalPages; i++) {
+                        pagina.append($('<option>', {
+                            value: i,
+                            text: i
+                        }));
+                    }
+                    $('#tabela tbody > tr').remove();
+                    preencheTabela(response.data.content);
                 }
-                $('#tabela tbody > tr').remove();
-                preencheTabela(response.data.content);
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
             }
         },
         error: function (response) {

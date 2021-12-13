@@ -45,37 +45,42 @@ function consultarUsuario(){
         },
         data: null,
         success: function (response) {
-            abreNotificacao('success', 'Consulta realizada com sucesso!');
+            if(status === 200) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
 
-            email_solicitacao.val('').css('background-color', '#eee');;
-            email_atual.val('').css('background-color', '#eee');;
-            data_solicitacao.val('');
+                email_solicitacao.val('').css('background-color', '#eee');
+                email_atual.val('').css('background-color', '#eee');
+                data_solicitacao.val('');
 
-            var usuario = response.data;
-            nome.val(usuario.firstName + ' ' + usuario.lastName);
+                var usuario = response.data;
+                nome.val(usuario.firstName + ' ' + usuario.lastName);
 
-            var emailAtual = usuario.email;
-            var novoEmail = '';
-            if(usuario.solicitacaoEmail !== undefined){
-                novoEmail = usuario.solicitacaoEmail.emailNew;
-                data_solicitacao.val(converteTimestampParaString(usuario.solicitacaoEmail.dataCriacao));
+                var emailAtual = usuario.email;
+                var novoEmail = '';
+                if (usuario.solicitacaoEmail !== undefined) {
+                    novoEmail = usuario.solicitacaoEmail.emailNew;
+                    data_solicitacao.val(converteTimestampParaString(usuario.solicitacaoEmail.dataCriacao));
+                }
+
+                email_atual.val(emailAtual);
+                email_solicitacao.val(novoEmail);
+                if (emailAtual === email_south) {
+                    email_atual.css('background-color', cor_email_south);
+                    novo_email.val(email_gmail).trigger('change');
+                } else if (emailAtual === email_gmail) {
+                    email_atual.css('background-color', cor_email_gmail);
+                    novo_email.val(email_south).trigger('change');
+                }
+
+                if (novoEmail === email_south)
+                    email_solicitacao.css('background-color', cor_email_south);
+                else if (novoEmail === email_gmail)
+                    email_solicitacao.css('background-color', cor_email_gmail);
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
             }
-
-            email_atual.val(emailAtual);
-            email_solicitacao.val(novoEmail);
-            if(emailAtual === email_south) {
-                email_atual.css('background-color', cor_email_south);
-                novo_email.val(email_gmail).trigger('change');
-            } else if(emailAtual === email_gmail) {
-                email_atual.css('background-color', cor_email_gmail);
-                novo_email.val(email_south).trigger('change');
-            }
-
-            if(novoEmail === email_south)
-                email_solicitacao.css('background-color', cor_email_south);
-            else if(novoEmail === email_gmail)
-                email_solicitacao.css('background-color', cor_email_gmail);
-
         },
         error: function (response) {
             if(response.status === 401){
@@ -98,10 +103,15 @@ function consultarEcs(){
         },
         data: null,
         success: function (response) {
-            abreNotificacao('success', 'Consulta realizada com sucesso!');
-            $('#tabela tbody > tr').remove();
-            preencheTabela(response.data);
-
+            if(status === 200) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                $('#tabela tbody > tr').remove();
+                preencheTabela(response.data);
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
         },
         error: function (response) {
             if(response.status === 401){
@@ -141,12 +151,18 @@ function confirmarCancelar(isConfirmar){
         dataType: 'json',
         data: null,
         success: function (response) {
-            if(response.status.reference === undefined)
-                abreNotificacao('info', 'Solicitação realizada com sucesso!');
-            else
-                abreNotificacao('danger', response.status.description);
-            mensagem.html(response.status.description);
-            consultarDadosEc();
+            if(status === 200) {
+                if (response.status.reference === undefined)
+                    abreNotificacao('info', 'Solicitação realizada com sucesso!');
+                else
+                    abreNotificacao('danger', response.status.description);
+                mensagem.html(response.status.description);
+                consultarDadosEc();
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
         },
         error: function (response) {
             if(response.status === 401){
@@ -169,13 +185,18 @@ btn_alterar.click(function(){
         },
         data: null,
         success: function (response) {
-            if(response.status.reference === undefined)
-                abreNotificacao('info', 'Email alterado com sucesso!');
-            else
-                abreNotificacao('danger', response.status.description);
-            mensagem.html(response.status.description);
-            consultarDadosEc();
-
+            if(status === 200) {
+                if (response.status.reference === undefined)
+                    abreNotificacao('info', 'Email alterado com sucesso!');
+                else
+                    abreNotificacao('danger', response.status.description);
+                mensagem.html(response.status.description);
+                consultarDadosEc();
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
         },
         error: function (response) {
             if(response.status === 401){
