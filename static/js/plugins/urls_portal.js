@@ -8,9 +8,9 @@ var LOCAL_STORAGE_AUTH = 'AUTH';
 var TOKEN;
 
 function getConfigs(){
-    getAuth();
-    getAmbiente();
-    getAmbienteToken();
+    setRealm();
+    setAmbiente();
+    setTipoToken();
 }
 
 realm.change(function(){
@@ -25,45 +25,93 @@ tipo_token.change(function(){
     localStorage.setItem(LOCAL_STORAGE_AMBIENTE_TOKEN, this.value);
 });
 
-function getAuth(){
+function setRealm(){
     realm.val(localStorage.getItem(LOCAL_STORAGE_AUTH));
 }
 
-function getAmbiente(){
+function setAmbiente(){
     ambiente.val(localStorage.getItem(LOCAL_STORAGE_AMBIENTE));
 }
 
-function getAmbienteToken(){
+function setTipoToken(){
     tipo_token.val(localStorage.getItem(LOCAL_STORAGE_AMBIENTE_TOKEN));
 }
 
-var HOST_LOCAL = 'http://localhost:';
-var HOST_HTI = 'https://servicosportais-hti.getnet.com.br';
+function getRealm(){
+    return realm.val();
+}
 
-var URL  = {
-    KEYCLOACK : {
-        NEW : 'https://getsso-hom.getnet.com.br',
-        OLD : HOST_HTI,
-        REALM : {
-            AUTH: 'external',
-            ATENDIMENTO: 'getnet',
-            INTERNO: 'getnet'
-        }
+function getAmbiente(){
+    return ambiente.val();
+}
+
+function getTipoToken(){
+    return tipo_token.val();
+}
+
+var KEYCLOAK_HML = 'https://getsso-hom.getnet.com.br';
+
+var REALM = {
+    AUTH: 'external',
+    ATENDIMENTO: 'getnet',
+    INTERNO: 'getnet'
+};
+
+var HOST = {
+    HTI: 'https://servicosportais-hti.getnet.com.br',
+    HK: 'https://servicosportais-hk.getnet.com.br',
+    PROD: 'https://servicosportais.getnet.com.br'
+};
+
+var KEYCLOAK = {
+    HTI: {
+        NEW: KEYCLOAK_HML,
+        OLD: HOST.HTI
     },
+    HK: {
+        NEW: KEYCLOAK_HML,
+        OLD: HOST.HK
+    },
+    PROD: 'https://getsso.getnet.com.br'
+};
+
+var SERVICO  = {
     EXTRATOS : {
-        LOCAL : HOST_LOCAL + '8021',
-        HTI : HOST_HTI + '/services/mc-extratos'
+        LOCAL : 'http://localhost:8021',
+        OUTROS : '/services/mc-extratos'
     },
     PRODUTOS : {
-        LOCAL : HOST_LOCAL + '8022',
-        HTI : HOST_HTI + '/services/mc-produtos'
+        LOCAL : 'http://localhost:8022',
+        OUTROS : '/services/mc-produtos'
     },
     CADASTRO : {
-        LOCAL : HOST_LOCAL + '8016',
-        HTI : HOST_HTI + '/services/mc-cadastro'
+        LOCAL : 'http://localhost:8016',
+        OUTROS : '/services/mc-cadastro'
     },
     MANAGEMENT : {
-        LOCAL : HOST_LOCAL + '8008',
-        HTI : HOST_HTI + '/services/mc-management'
+        LOCAL : 'http://localhost:8008',
+        OUTROS : '/services/mc-management'
     }
 };
+
+function getUrlKeycloak(){
+    var url;
+    var ambiente = getAmbiente();
+    var tipo = getTipoToken();
+    var realm = getRealm();
+    if(ambiente === 'PROD'){
+        url = KEYCLOAK.PROD;
+    } else {
+        if(ambiente === 'LOCAL')
+            ambiente = 'HTI';
+        url = KEYCLOAK[ambiente][tipo];
+    }
+    return url + '/auth/realms/' + REALM[realm] + '/protocol/openid-connect/token'
+}
+
+function getUrlBaseServico(servico){
+    var ambiente = getAmbiente();
+    if(ambiente === 'LOCAL')
+        return servico.LOCAL;
+    return HOST[ambiente] + '/' + servico.OUTROS;
+}

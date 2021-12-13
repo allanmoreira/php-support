@@ -36,7 +36,7 @@ function consultarDadosEc(){
 
 function consultarUsuario(){
     $.ajax({
-        url: URL.MANAGEMENT[ambiente.val()] + '/v1/user/'+usuario.val(),
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/user/'+usuario.val(),
         async: true,
         type: 'GET',
         dataType: 'json',
@@ -89,7 +89,7 @@ function consultarUsuario(){
 
 function consultarEcs(){
     $.ajax({
-        url: URL.MANAGEMENT[ambiente.val()] + '/v1/user/' + usuario.val() + '/merchants',
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/user/' + usuario.val() + '/merchants',
         async: true,
         type: 'GET',
         dataType: 'json',
@@ -135,7 +135,7 @@ btn_cancelar.click(function(){
 
 function confirmarCancelar(isConfirmar){
     $.ajax({
-        url: URL.MANAGEMENT[ambiente.val()] + '/public/v1/user/update-email/' + (isConfirmar ? 'confirm' : 'cancel') + '?key=' + getHash(hash.val()),
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/public/v1/user/update-email/' + (isConfirmar ? 'confirm' : 'cancel') + '?key=' + getHash(hash.val()),
         async: true,
         type: 'GET',
         dataType: 'json',
@@ -160,7 +160,7 @@ function confirmarCancelar(isConfirmar){
 
 btn_alterar.click(function(){
     $.ajax({
-        url: URL.MANAGEMENT[ambiente.val()] + '/v1/user/' + usuario.val() + '/update-email/request?email=' + novo_email.val(),
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/user/' + usuario.val() + '/update-email/request?email=' + novo_email.val(),
         async: true,
         type: 'GET',
         dataType: 'json',

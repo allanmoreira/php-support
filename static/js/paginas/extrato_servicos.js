@@ -65,7 +65,7 @@ function consulta() {
 
 
     $.ajax({
-        url: URL.EXTRATOS[ambiente.val()] + '/api/v2/estabelecimento/'+ec.val()+'/extratos/servicos',
+        url: getUrlBaseServico(SERVICO.EXTRATOS) + '/api/v2/estabelecimento/'+ec.val()+'/extratos/servicos',
         async: true,
         type: 'GET',
         dataType: 'json',

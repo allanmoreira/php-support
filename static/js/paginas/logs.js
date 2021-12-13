@@ -44,7 +44,7 @@ btn_update_event_types.click(function(){
 
 function eventsTypes() {
     $.ajax({
-        url: URL.MANAGEMENT[ambiente.val()] + '/v1/audit/events/event-types',
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/audit/events/event-types',
         async: true,
         type: 'GET',
         dataType: 'json',
@@ -96,7 +96,7 @@ function consulta(id) {
     }
 
     $.ajax({
-        url: URL.MANAGEMENT[ambiente.val()] + '/v1/audit/events',
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/audit/events',
         async: true,
         type: 'GET',
         dataType: 'json',

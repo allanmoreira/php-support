@@ -25,7 +25,7 @@ btn_executar.click(function(){
 
 function consulta() {
     $.ajax({
-        url: URL.PRODUTOS[ambiente.val()] + '/api/v1/estabelecimento/'+ec.val()+'/simulador',
+        url: getUrlBaseServico(SERVICO.PRODUTOS) + '/api/v1/estabelecimento/'+ec.val()+'/simulador',
         async: true,
         type: 'GET',
         dataType: 'json',
