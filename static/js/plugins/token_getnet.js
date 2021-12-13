@@ -41,7 +41,7 @@ var DATA_TOKEN = {
 
 function gerarToken() {
     $.ajax({
-        url: URL.KEYCLOACK[ambiente_token.val()] + '/auth/realms/' + URL.KEYCLOACK.REALM[auth.val()] + '/protocol/openid-connect/token',
+        url: URL.KEYCLOACK[tipo_token.val()] + '/auth/realms/' + URL.KEYCLOACK.REALM[auth.val()] + '/protocol/openid-connect/token',
         async: true,
         type: 'POST',
         dataType: 'json',

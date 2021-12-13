@@ -8,7 +8,7 @@
     </select>
 
     <label>Ambiente Token</label>
-    <select id="ambiente_token" class="form-control">
+    <select id="tipo_token" class="form-control">
         <option value="NEW">New</option>
         <option value="OLD">Old</option>
     </select>

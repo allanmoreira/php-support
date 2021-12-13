@@ -1,4 +1,4 @@
-var ambiente_token = $('#ambiente_token');
+var tipo_token = $('#tipo_token');
 var ambiente = $('#ambiente');
 var auth = $('#auth');
 
@@ -21,7 +21,7 @@ ambiente.change(function(){
     localStorage.setItem(LOCAL_STORAGE_AMBIENTE, this.value);
 });
 
-ambiente_token.change(function(){
+tipo_token.change(function(){
     localStorage.setItem(LOCAL_STORAGE_AMBIENTE_TOKEN, this.value);
 });
 
@@ -34,7 +34,7 @@ function getAmbiente(){
 }
 
 function getAmbienteToken(){
-    ambiente_token.val(localStorage.getItem(LOCAL_STORAGE_AMBIENTE_TOKEN));
+    tipo_token.val(localStorage.getItem(LOCAL_STORAGE_AMBIENTE_TOKEN));
 }
 
 var HOST_LOCAL = 'http://localhost:';
