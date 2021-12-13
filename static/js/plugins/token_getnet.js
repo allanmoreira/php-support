@@ -41,11 +41,11 @@ var DATA_TOKEN = {
 
 function gerarToken() {
     $.ajax({
-        url: URL.KEYCLOACK[tipo_token.val()] + '/auth/realms/' + URL.KEYCLOACK.REALM[auth.val()] + '/protocol/openid-connect/token',
+        url: URL.KEYCLOACK[tipo_token.val()] + '/auth/realms/' + URL.KEYCLOACK.REALM[realm.val()] + '/protocol/openid-connect/token',
         async: true,
         type: 'POST',
         dataType: 'json',
-        data: DATA_TOKEN[auth.val()],
+        data: DATA_TOKEN[realm.val()],
         statusCode: {
             401: function (response) {
                 abreNotificacao('warning', 'Não autorizado!');

@@ -1,6 +1,6 @@
 var tipo_token = $('#tipo_token');
 var ambiente = $('#ambiente');
-var auth = $('#auth');
+var realm = $('#realm');
 
 var LOCAL_STORAGE_AMBIENTE = 'AMBIENTE';
 var LOCAL_STORAGE_AMBIENTE_TOKEN = 'AMBIENTE_TOKEN';
@@ -13,7 +13,7 @@ function getConfigs(){
     getAmbienteToken();
 }
 
-auth.change(function(){
+realm.change(function(){
     localStorage.setItem(LOCAL_STORAGE_AUTH, this.value);
 });
 
@@ -26,7 +26,7 @@ tipo_token.change(function(){
 });
 
 function getAuth(){
-    auth.val(localStorage.getItem(LOCAL_STORAGE_AUTH));
+    realm.val(localStorage.getItem(LOCAL_STORAGE_AUTH));
 }
 
 function getAmbiente(){

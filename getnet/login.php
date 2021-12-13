@@ -1,7 +1,7 @@
 <div class="col-lg-2">
     <h4><strong>Token</strong></h4>
     <label>Auth</label>
-    <select id="auth" class="form-control">
+    <select id="realm" class="form-control">
         <option value="AUTH">Auth</option>
         <option value="ATENDIMENTO">Atendimento</option>
         <option value="INTERNO">Interno</option>
