@@ -37,7 +37,8 @@ function consulta() {
             cartao: cartao.val()
         },
         success: function (response) {
-            if(status === 200) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
                 abreNotificacao('success', 'Consulta realizada com sucesso!');
                 mensagem.html(response.status.description);
                 $('#tabela thead > tr').remove();

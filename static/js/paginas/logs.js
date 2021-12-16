@@ -52,8 +52,8 @@ function eventsTypes() {
             xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
         },
         success: function (response) {
-            var status = response.data.status;
-            if(status === 200) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
                 abreNotificacao('success', 'Consulta realizada com sucesso!');
                 mensagem.html(response.status.description);
                 response.data.forEach(function (item) {
@@ -114,7 +114,8 @@ function consulta(id) {
         },
         data: data,
         success: function (response) {
-            if(status === 200) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
                 abreNotificacao('success', 'Consulta realizada com sucesso!');
                 mensagem.html(response.status.description);
                 if (buscaPorId) {

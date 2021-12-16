@@ -45,7 +45,8 @@ function consultarUsuario(){
         },
         data: null,
         success: function (response) {
-            if(status === 200) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
                 abreNotificacao('success', 'Consulta realizada com sucesso!');
 
                 email_solicitacao.val('').css('background-color', '#eee');
@@ -103,7 +104,8 @@ function consultarEcs(){
         },
         data: null,
         success: function (response) {
-            if(status === 200) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
                 abreNotificacao('success', 'Consulta realizada com sucesso!');
                 $('#tabela tbody > tr').remove();
                 preencheTabela(response.data);
@@ -151,7 +153,8 @@ function confirmarCancelar(isConfirmar){
         dataType: 'json',
         data: null,
         success: function (response) {
-            if(status === 200) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
                 if (response.status.reference === undefined)
                     abreNotificacao('info', 'Solicitação realizada com sucesso!');
                 else
@@ -185,7 +188,8 @@ btn_alterar.click(function(){
         },
         data: null,
         success: function (response) {
-            if(status === 200) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
                 if (response.status.reference === undefined)
                     abreNotificacao('info', 'Email alterado com sucesso!');
                 else

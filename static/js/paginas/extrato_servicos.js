@@ -79,7 +79,8 @@ function consulta() {
             pago : true
         },
         success: function (response) {
-            if(status === 200) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
                 abreNotificacao('success', 'Consulta realizada com sucesso!');
                 $('#tabela_resumo_novo tbody > tr').remove();
                 $('#tabela_resumo tbody > tr').remove();
