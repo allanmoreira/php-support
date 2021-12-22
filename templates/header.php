@@ -51,7 +51,14 @@
                     </li>
                     <li><a href="upload.php">Upload</a></li>
                     <li><a href="despesas_maccari.php">Despesas Maccari</a></li>
-                    <li><a href="projecao_contas.php">Projeção Contas</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Planilha Financeira<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="projecao_contas.php">Projeção Contas</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Getnet<span class="caret"></span>
