@@ -39,7 +39,7 @@
         <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
             <?php require_once 'login.php'; ?>
 
-            <div class="col-lg-2">
+            <div class="col-lg-4">
                 <h4><strong>Endpoint</strong></h4>
                 <label>Pagina</label>
                 <select id="pagina" class="form-control">
@@ -53,6 +53,7 @@
                     <option value="100">100</option>
                 </select>
                 <br>
+                <button class="btn btn-primary" id="btn_cadastro">Cadastro</button>
                 <button class="btn btn-primary" id="btn_executar">Executar</button>
                 <button class="btn btn-success" id="btn_update_event_types">Atualizar Event Types</button>
             </div>
@@ -81,35 +82,37 @@
             </table>
         </div>
 
-        <div id="modal_detalhes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div id="modal_cadastro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel"><strong>Detalhes Log</strong></h4>
-                        </div>
-                        <div class="modal-body">
-                            <h4><strong>Básico</strong></h4>
-                            <div class="row">
-                                <div class="col-md-3 "><strong>ID: </strong><span id="id"></span></div>
-                                <div class="col-md-3 "><strong>Estabelecimento: </strong><span id="estabelecimento"></span></div>
-                                <div class="col-md-3 col-md-offset-3"><strong>Usuário: </strong><span id="usuario"></span></div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><strong>Cadastro</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form_salvar" class="form-horizontal form-bordered">
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                                    <label>Key</label>
+                                    <input type="text" id="key" class="form-control form-cadastro">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Type</label>
+                                    <input type="text" id="type" class="form-control form-cadastro">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Description</label>
+                                    <input type="text" id="description" class="form-control form-cadastro">
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>Description</label>
+                                    <textarea rows="3" id="value" class="form-control form-cadastro"></textarea>
+                                </div>
                             </div>
-                            <br>
-                            <h4><strong>Request</strong></h4>
-                            <div class="row">
-                                <div class="col-md-6"><strong>Service: </strong><span id="service"></span></div>
-                                <div class="col-md-6"><strong>Path: </strong><span id="path"></span></div>
-                                <div class="col-md-12"><strong>Detail: </strong><span id="detail"></span></div>
-                            </div>
-                            <br>
-                            <h4><strong>Response</strong></h4>
-                            <div class="row">
-                                <div class="col-md-12"><strong>Response: </strong><pre id="response"></pre></div>
-                                <div class="col-md-12"><strong>Stack Info: </strong><pre id="stack_info" style="max-height: 300px"></pre></div>
-                            </div>
-                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn_salvar_cadastro" class="btn btn-effect-ripple btn-primary">Salvar</button>
                     </div>
                 </div>
             </div>
