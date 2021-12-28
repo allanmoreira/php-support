@@ -8,7 +8,8 @@ var btn_cadastro = $('#btn_cadastro');
 var btn_salvar_cadastro = $('#btn_salvar_cadastro');
 var modal_cadastro = $('#modal_cadastro');
 var key = $('#key');
-var type = $('#type');
+var value_type = $('#value_type');
+var param_type = $('#param_type');
 var description = $('#description');
 var value = $('#value');
 
@@ -16,7 +17,8 @@ $(function(){
     getConfigs();
     itens_pagina.val('50');
     consulta();
-    consultaTypes();
+    consultaValueTypes();
+    consultaParamTypes();
 });
 
 btn_executar.click(function(){
@@ -70,12 +72,15 @@ function consulta() {
 function preencheTabela(lista_itens){
     var html = '';
     lista_itens.forEach(function (item){
+        var enable = item.enable;
         html +=
             '<tr>' +
                 '<td class="text-center"><a href="javascript:void(0)" data-id="' + item.key + '" class="btn-editar" data-toggle="tooltip" title="Editar"><strong>' + item.key + '</strong></a></td>' +
                 '<td class="text-center">' + (item.description !== undefined ? item.description : '') + '</td>' +
-                '<td class="text-center">' + item.type + '</td>' +
+                '<td class="text-center">' + item.valueType + '</td>' +
                 '<td class="text-center">' + item.value + '</td>' +
+                '<td class="text-center"><strong class="text-'+(enable?'success':'danger')+'">' + (enable?'Sim':'Não') + '</strong></td>' +
+                '<td class="text-center btn-enable-disable" data-toggle="'+item.key+'/'+(enable?'disable':'enable')+'"><button class="btn btn-sm btn-'+(enable?'danger':'success')+'">'+(enable ? 'Desativar' : 'Ativar')+'</button></td>' +
             '</tr>';
     });
     $('#tabela tbody').append(html);
@@ -92,7 +97,8 @@ btn_salvar_cadastro.click(function(){
 
 function limpaForm(){
     key.val('');
-    type.val('');
+    value_type.val('');
+    param_type.val('');
     value.val('');
     description.val('');
 }
@@ -111,7 +117,8 @@ function cadastro() {
             "key": key.val(),
             "description": description.val(),
             "value": value.val(),
-            "type": type.val()
+            "valueType": value_type.val(),
+            "paramType": param_type.val()
         }),
         success: function (response) {
             var status = parseInt(response.status.value);
@@ -153,7 +160,8 @@ $(document).on("click", ".btn-editar", function() {
                 limpaForm();
                 var item = response.data;
                 key.val(item.key);
-                type.val(item.type);
+                value_type.val(item.valueType);
+                param_type.val(item.paramType);
                 value.val(item.value);
                 description.val(item.description);
                 modal_cadastro.modal('show');
@@ -173,7 +181,7 @@ $(document).on("click", ".btn-editar", function() {
     });
 });
 
-function consultaTypes() {
+function consultaValueTypes() {
     $.ajax({
         url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/parameters/value-types',
         async: true,
@@ -188,9 +196,9 @@ function consultaTypes() {
                 abreNotificacao('success', 'Consulta realizada com sucesso!');
                 mensagem.html(response.status.description);
                 var list = response.data;
-                type.empty();
+                value_type.empty();
                 list.forEach(function (item){
-                    type.append($('<option>', {
+                    value_type.append($('<option>', {
                         value: item,
                         text: item
                     }));
@@ -210,3 +218,73 @@ function consultaTypes() {
         }
     });
 }
+
+function consultaParamTypes() {
+    $.ajax({
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/parameters/parameter-types',
+        async: true,
+        type: 'GET',
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
+        },
+        success: function (response) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                mensagem.html(response.status.description);
+                var list = response.data;
+                param_type.empty();
+                list.forEach(function (item){
+                    param_type.append($('<option>', {
+                        value: item,
+                        text: item
+                    }));
+                });
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        },
+        error: function (response) {
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        }
+    });
+}
+
+$(document).on("click", ".btn-enable-disable", function() {
+    var id = $(this).attr("data-toggle");
+    $.ajax({
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/parameters/' + id,
+        async: true,
+        type: 'POST',
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
+        },
+        success: function (response) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                mensagem.html(response.status.description);
+                consulta();
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        },
+        error: function (response) {
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        }
+    });
+});

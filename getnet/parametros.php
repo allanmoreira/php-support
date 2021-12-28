@@ -76,6 +76,8 @@
                         <th class="text-center">Descrição</th>
                         <th class="text-center">Tipo</th>
                         <th class="text-center">Valor</th>
+                        <th class="text-center">Ativo</th>
+                        <th class="text-center">#</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -92,19 +94,25 @@
                     <div class="modal-body">
                         <form id="form_salvar" class="form-horizontal form-bordered">
                             <div class="form-group">
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <label>Key</label>
                                     <input type="text" id="key" class="form-control form-cadastro">
                                 </div>
-                                <div class="col-lg-4">
-                                    <label>Type</label>
-                                    <select id="type" class="form-control">
+                                <div class="col-lg-6">
+                                    <label>Description</label>
+                                    <input type="text" id="description" class="form-control form-cadastro">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Tipo Valor</label>
+                                    <select id="value_type" class="form-control">
                                         <option value="0">0</option>
                                     </select>
                                 </div>
-                                <div class="col-lg-4">
-                                    <label>Description</label>
-                                    <input type="text" id="description" class="form-control form-cadastro">
+                                <div class="col-lg-6">
+                                    <label>Tipo Parâmetro</label>
+                                    <select id="param_type" class="form-control">
+                                        <option value="0">0</option>
+                                    </select>
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Description</label>
