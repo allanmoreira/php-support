@@ -55,7 +55,7 @@
                 <br>
                 <button class="btn btn-primary" id="btn_cadastro">Cadastro</button>
                 <button class="btn btn-primary" id="btn_executar">Executar</button>
-                <button class="btn btn-success" id="btn_update_event_types">Atualizar Event Types</button>
+                <button class="btn btn-success" id="btn_update_options">Atualizar Options</button>
             </div>
         </div>
 

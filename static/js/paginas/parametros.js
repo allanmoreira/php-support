@@ -6,6 +6,7 @@ var itens_pagina = $('#itens_pagina');
 var response = $('#response');
 var btn_cadastro = $('#btn_cadastro');
 var btn_salvar_cadastro = $('#btn_salvar_cadastro');
+var btn_update_options = $('#btn_update_options');
 var modal_cadastro = $('#modal_cadastro');
 var key = $('#key');
 var value_type = $('#value_type');
@@ -287,4 +288,9 @@ $(document).on("click", ".btn-enable-disable", function() {
             }
         }
     });
+});
+
+btn_update_options.click(function(){
+    consultaValueTypes();
+    consultaParamTypes();
 });
