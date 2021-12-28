@@ -98,7 +98,9 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <label>Type</label>
-                                    <input type="text" id="type" class="form-control form-cadastro">
+                                    <select id="type" class="form-control">
+                                        <option value="0">0</option>
+                                    </select>
                                 </div>
                                 <div class="col-lg-4">
                                     <label>Description</label>

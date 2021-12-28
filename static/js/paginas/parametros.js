@@ -16,6 +16,7 @@ $(function(){
     getConfigs();
     itens_pagina.val('50');
     consulta();
+    consultaTypes();
 });
 
 btn_executar.click(function(){
@@ -171,3 +172,41 @@ $(document).on("click", ".btn-editar", function() {
         }
     });
 });
+
+function consultaTypes() {
+    $.ajax({
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/parameters/value-types',
+        async: true,
+        type: 'GET',
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
+        },
+        success: function (response) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                mensagem.html(response.status.description);
+                var list = response.data;
+                type.empty();
+                list.forEach(function (item){
+                    type.append($('<option>', {
+                        value: item,
+                        text: item
+                    }));
+                });
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        },
+        error: function (response) {
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        }
+    });
+}
