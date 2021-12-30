@@ -94,28 +94,22 @@
                     <div class="modal-body">
                         <form id="form_salvar" class="form-horizontal form-bordered">
                             <div class="form-group">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <label>Key</label>
                                     <input type="text" id="key" class="form-control form-cadastro">
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <label>Description</label>
                                     <input type="text" id="description" class="form-control form-cadastro">
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <label>Tipo Valor</label>
-                                    <select id="value_type" class="form-control">
-                                        <option value="0">0</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6">
-                                    <label>Tipo Parâmetro</label>
-                                    <select id="param_type" class="form-control">
+                                    <select id="type" class="form-control">
                                         <option value="0">0</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-12">
-                                    <label>Description</label>
+                                    <label>Valor</label>
                                     <textarea rows="3" id="value" class="form-control form-cadastro"></textarea>
                                 </div>
                             </div>

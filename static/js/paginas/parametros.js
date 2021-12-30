@@ -9,8 +9,7 @@ var btn_salvar_cadastro = $('#btn_salvar_cadastro');
 var btn_update_options = $('#btn_update_options');
 var modal_cadastro = $('#modal_cadastro');
 var key = $('#key');
-var value_type = $('#value_type');
-var param_type = $('#param_type');
+var type = $('#type');
 var description = $('#description');
 var value = $('#value');
 
@@ -18,8 +17,7 @@ $(function(){
     getConfigs();
     itens_pagina.val('50');
     consulta();
-    consultaValueTypes();
-    consultaParamTypes();
+    consultaTypes();
 });
 
 btn_executar.click(function(){
@@ -78,7 +76,7 @@ function preencheTabela(lista_itens){
             '<tr>' +
                 '<td class="text-center"><a href="javascript:void(0)" data-id="' + item.key + '" class="btn-editar" data-toggle="tooltip" title="Editar"><strong>' + item.key + '</strong></a></td>' +
                 '<td class="text-center">' + (item.description !== undefined ? item.description : '') + '</td>' +
-                '<td class="text-center">' + item.valueType + '</td>' +
+                '<td class="text-center">' + item.type + '</td>' +
                 '<td class="text-center">' + item.value + '</td>' +
                 '<td class="text-center"><strong class="text-'+(enable?'success':'danger')+'">' + (enable?'Sim':'Não') + '</strong></td>' +
                 '<td class="text-center btn-enable-disable" data-toggle="'+item.key+'/'+(enable?'disable':'enable')+'"><button class="btn btn-sm btn-'+(enable?'danger':'success')+'">'+(enable ? 'Desativar' : 'Ativar')+'</button></td>' +
@@ -89,6 +87,7 @@ function preencheTabela(lista_itens){
 
 btn_cadastro.click(function(){
     limpaForm();
+    key.focus();
     modal_cadastro.modal('show');
 });
 
@@ -98,8 +97,7 @@ btn_salvar_cadastro.click(function(){
 
 function limpaForm(){
     key.val('');
-    value_type.val('');
-    param_type.val('');
+    type.val('');
     value.val('');
     description.val('');
 }
@@ -118,8 +116,7 @@ function cadastro() {
             "key": key.val(),
             "description": description.val(),
             "value": value.val(),
-            "valueType": value_type.val(),
-            "paramType": param_type.val()
+            "type": type.val()
         }),
         success: function (response) {
             var status = parseInt(response.status.value);
@@ -161,8 +158,7 @@ $(document).on("click", ".btn-editar", function() {
                 limpaForm();
                 var item = response.data;
                 key.val(item.key);
-                value_type.val(item.valueType);
-                param_type.val(item.paramType);
+                type.val(item.type);
                 value.val(item.value);
                 description.val(item.description);
                 modal_cadastro.modal('show');
@@ -182,9 +178,9 @@ $(document).on("click", ".btn-editar", function() {
     });
 });
 
-function consultaValueTypes() {
+function consultaTypes() {
     $.ajax({
-        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/parameters/value-types',
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/parameters/types',
         async: true,
         type: 'GET',
         dataType: 'json',
@@ -197,47 +193,9 @@ function consultaValueTypes() {
                 abreNotificacao('success', 'Consulta realizada com sucesso!');
                 mensagem.html(response.status.description);
                 var list = response.data;
-                value_type.empty();
+                type.empty();
                 list.forEach(function (item){
-                    value_type.append($('<option>', {
-                        value: item,
-                        text: item
-                    }));
-                });
-            } else if(status === 404){
-                abreNotificacao('warning', 'Não encontrado!');
-            } else {
-                abreNotificacao('danger', 'ERRO');
-            }
-        },
-        error: function (response) {
-            if(response.status === 401){
-                abreNotificacao('warning', 'Não autorizado!');
-            } else {
-                abreNotificacao('danger', 'ERRO');
-            }
-        }
-    });
-}
-
-function consultaParamTypes() {
-    $.ajax({
-        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/v1/parameters/parameter-types',
-        async: true,
-        type: 'GET',
-        dataType: 'json',
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
-        },
-        success: function (response) {
-            var status = parseInt(response.status.value);
-            if(status === 200 || status === 0) {
-                abreNotificacao('success', 'Consulta realizada com sucesso!');
-                mensagem.html(response.status.description);
-                var list = response.data;
-                param_type.empty();
-                list.forEach(function (item){
-                    param_type.append($('<option>', {
+                    type.append($('<option>', {
                         value: item,
                         text: item
                     }));
@@ -291,6 +249,5 @@ $(document).on("click", ".btn-enable-disable", function() {
 });
 
 btn_update_options.click(function(){
-    consultaValueTypes();
-    consultaParamTypes();
+    consultaTypes();
 });
