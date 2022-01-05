@@ -1,7 +1,6 @@
 var mensagem = $('#mensagem');
 var btn_executar = $('#btn_executar');
-var cor_sucesso = '#56ee71';
-var cor_falha = '#ff4949';
+var dados_validar = $('#dados_validar');
 
 var entradas_projecao = $('#entradas_projecao');
 var entradas_recebido = $('#entradas_recebido');
@@ -12,6 +11,29 @@ var total_saldo_devedor = $('#total_saldo_devedor');
 var atual_atual = $('#atual_atual');
 var atual_projecao_mes = $('#atual_projecao_mes');
 var atual_projecao_atual_mes = $('#atual_projecao_atual_mes');
+
+var cor_sucesso = '#56ee71';
+var cor_falha = '#ff4949';
+var json_comparativos = {
+    "atual": {
+        "entradas": {
+            "projecao": 15888.27,
+            "recebido": 10684.72,
+            "pendente": 5203.55
+        },
+        "dividas": {
+            "total": 6952.66,
+            "totalComDizimo": 8697.12,
+            "pago": 0,
+            "saldoDevedor": 6952.66
+        },
+        "saldo": {
+            "atual": 22782.20,
+            "projecaoMes": 8935.61,
+            "projecaoAtualMes": 21033.09
+        }
+    }
+}
 
 $(function(){
     getConfigs();
@@ -52,17 +74,19 @@ function getDadosAPI(){
 }
 
 function preencheTabela(item){
-    var entradas = item.entradas;
-    var dividas = item.dividas;
-    var saldo = item.saldo;
-    entradas_projecao.html(converteFloatParaMoeda(entradas.projecao, 2));
-    entradas_recebido.html(converteFloatParaMoeda(entradas.recebido, 2));
-    entradas_pendente.html(converteFloatParaMoeda(entradas.pendente, 2));
-    total_total.html(converteFloatParaMoeda(dividas.total, 2));
-    total_pago.html(converteFloatParaMoeda(dividas.pago, 2));
-    total_saldo_devedor.html(converteFloatParaMoeda(dividas.saldoDevedor, 2));
-    atual_atual.html(converteFloatParaMoeda(saldo.atual, 2));
-    atual_projecao_mes.html(converteFloatParaMoeda(saldo.projecaoMes, 2));
-    atual_projecao_atual_mes.html(converteFloatParaMoeda(saldo.projecaoAtualMes, 2));
+    var dados = json_comparativos[dados_validar.val()];
+    validaDadosCelula(entradas_projecao, item.entradas.projecao, dados.entradas.projecao);
+    validaDadosCelula(entradas_recebido, item.entradas.recebido, dados.entradas.recebido);
+    validaDadosCelula(entradas_pendente, item.entradas.pendente, dados.entradas.pendente);
+    validaDadosCelula(total_total, item.dividas.total, dados.dividas.total);
+    validaDadosCelula(total_pago, item.dividas.pago, dados.dividas.pago);
+    validaDadosCelula(total_saldo_devedor, item.dividas.saldoDevedor, dados.dividas.saldoDevedor);
+    validaDadosCelula(atual_atual, item.saldo.atual, dados.saldo.atual);
+    validaDadosCelula(atual_projecao_mes, item.saldo.projecaoMes, dados.saldo.projecaoMes);
+    validaDadosCelula(atual_projecao_atual_mes, item.saldo.projecaoAtualMes, dados.saldo.projecaoAtualMes);
+}
+
+function validaDadosCelula(campo, item_retorno, item_comparacao){
+    campo.html(converteFloatParaMoeda(item_retorno, 2)).css('background', (item_retorno === item_comparacao ? cor_sucesso : cor_falha));
 }
 

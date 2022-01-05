@@ -1,6 +1,18 @@
 <?php require_once 'templates/header.php'; ?>
 <?php require_once 'templates/login_pf.php'; ?>
 
+        <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
+            <?php require_once 'templates/login_pf.php'; ?>
+
+            <div class="col-lg-6">
+                <h4><strong>Endpoint</strong></h4>
+                <label>Dados Validar</label>
+                <select id="dados_validar" class="form-control">
+                    <option value="atual">Atual</option>
+                </select>
+            </div>
+        </div>
+
         <div style="margin-left: 10px">
             <h4><strong>Mensagem:</strong> <span id="mensagem"></span></h4>
         </div>
