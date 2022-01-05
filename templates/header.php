@@ -57,6 +57,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="projecao_contas.php">Projeção Contas</a></li>
+                            <li><a href="emprestimo.php">Empréstimo</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
