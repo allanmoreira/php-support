@@ -13,6 +13,8 @@
             </div>
         </div>
 
+        <hr/>
+
         <div style="margin-left: 10px">
             <h4><strong>Mensagem:</strong> <span id="mensagem"></span></h4>
         </div>
