@@ -39,7 +39,7 @@
         <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
             <?php require_once 'login.php'; ?>
 
-            <div class="col-lg-2">
+            <div class="col-lg-4">
                 <h4><strong>Endpoint</strong></h4>
                 <label>EC</label>
                 <input id="ec" class="form-control" placeholder="ec">
@@ -57,6 +57,7 @@
                 <br>
                 <button class="btn btn-primary" id="btn_executar">Executar</button>
                 <button class="btn btn-success" id="btn_update_event_types">Atualizar Event Types</button>
+                <button class="btn btn-danger" id="btn_remover_evento">Remover <strong>TESTE_FEATURES_BD</strong></button>
             </div>
 
             <div class="col-lg-2">

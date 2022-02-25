@@ -3,6 +3,7 @@ var mensagem = $('#mensagem');
 var ec = $('#ec');
 var events = $('#events');
 var periodo = $('#periodo');
+var btn_remover_evento = $('#btn_remover_evento');
 var btn_update_event_types = $('#btn_update_event_types');
 var tabela = $('#tabela');
 var modal_detalhes = $('#modal_detalhes');
@@ -225,4 +226,34 @@ function preencheModal(evento){
 $(document).on("click", ".btn-detalhes", function() {
     var id = $(this).attr("data-id");
     consulta(id);
+});
+
+btn_remover_evento.click(function(){
+    $.ajax({
+        url: getUrlBaseServico(SERVICO.MANAGEMENT) + '/audit-features/delete-logs',
+        async: true,
+        type: 'POST',
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
+        },
+        success: function (response) {
+            var status = parseInt(response.status.value);
+            if(status === 200 || status === 0) {
+                abreNotificacao('success', 'Consulta realizada com sucesso!');
+                consulta();
+            } else if(status === 404){
+                abreNotificacao('warning', 'Não encontrado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        },
+        error: function (response) {
+            if(response.status === 401){
+                abreNotificacao('warning', 'Não autorizado!');
+            } else {
+                abreNotificacao('danger', 'ERRO');
+            }
+        }
+    });
 });
