@@ -22,7 +22,7 @@ var maxDate;
 
 $(function(){
     getConfigs();
-    ec.val('281534');
+    //ec.val('281534');
     periodo.val('15');
     itens_pagina.val('50');
     eventsTypes();
@@ -62,6 +62,7 @@ function eventsTypes() {
                         text: item
                     }));
                 });
+                events.val('TESTE_FEATURES_BD');
             } else if(status === 404){
                 abreNotificacao('warning', 'Não encontrado!');
             } else {
