@@ -8,6 +8,7 @@
                 <h4><strong>Endpoint</strong></h4>
                 <label>Dados Validar</label>
                 <select id="dados_validar" class="form-control">
+                    <option value="emprestado">Emprestado</option>
                     <option value="atual">Atual</option>
                 </select>
             </div>

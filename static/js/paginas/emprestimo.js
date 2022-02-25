@@ -32,6 +32,24 @@ var json_comparativos = {
             "projecaoMes": 8935.61,
             "projecaoAtualMes": 21033.09
         }
+    },
+    "emprestado": {
+        "entradas": {
+            "projecao": 15888.27,
+            "recebido": 10684.72,
+            "pendente": 5203.55
+        },
+        "dividas": {
+            "total": 6952.66,
+            "totalComDizimo": 8697.12,
+            "pago": 0,
+            "saldoDevedor": 6952.66
+        },
+        "saldo": {
+            "atual": 22682.20,
+            "projecaoMes": 8935.61,
+            "projecaoAtualMes": 20933.09
+        }
     }
 }
 
@@ -87,6 +105,7 @@ function preencheTabela(item){
 }
 
 function validaDadosCelula(campo, item_retorno, item_comparacao){
-    campo.html(converteFloatParaMoeda(item_retorno, 2)).css('background', (item_retorno === item_comparacao ? cor_sucesso : cor_falha));
+    var iguais = item_retorno === item_comparacao;
+    campo.html(converteFloatParaMoeda(item_retorno, 2) + (!iguais ? '<br><strong>'+converteFloatParaMoeda(item_comparacao, 2)+'</strong>' : '')).css('background', (iguais ? cor_sucesso : cor_falha));
 }
 
