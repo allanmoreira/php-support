@@ -23,8 +23,5 @@
         </div>
 
 <?php require_once 'templates/scripts.php'; ?>
-        <script src="static//js/jquery.mask.min.js"></script>
-        <script src="static//js/plugins/aguardar_carregamento_ajax.js"></script>
-        <script src="static//js/jquery.maskMoney.min.js"></script>
         <script src="static//js/paginas/upload.js"></script>
 <?php require_once 'templates/footer.php'; ?>
