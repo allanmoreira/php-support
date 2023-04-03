@@ -19,6 +19,8 @@
     <!-- Custom styles for this template -->
     <link href="static/css/theme.css" rel="stylesheet">
 
+    <link href="static/css/plugins.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -72,7 +74,7 @@
                             <li><a href="getnet/rate_limit.php">Rate Limit</a></li>
                             <li><a href="getnet/gestao_usuario.php">Gestão Usuário</a></li>
                             <li><a href="getnet/parametros.php">Parâmetros</a></li>
-                            <li><a href="getnet/api_contratos.php">API Contratos</a></li>
+                            <li><a href="getnet/tratamento_erros.php">Tratamento Erros</a></li>
                         </ul>
                     </li>
 
