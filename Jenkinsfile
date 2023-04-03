@@ -26,6 +26,8 @@ pipeline {
             }
             steps {
                 script {
+                    ARTIFACT_ID = "${pom.artifactId}"
+
                     sh name: 'Checkout Git master branch',
                     script: "git checkout -b ${BRANCH_DEFAULT} remotes/origin/${BRANCH_DEFAULT}"
 
