@@ -36,7 +36,7 @@
         <div id="loader" style="display: none" class="loader"></div>
 
         <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px" class="row">
-            <?php require_once 'login.php'; ?>
+            <?php require_once 'login_getnet.php'; ?>
 
             <div class="col-lg-6">
                 <h4><strong>Endpoint</strong></h4>
