@@ -7,18 +7,6 @@ pipeline {
         ARTIFACT_ID = ""
     }
     stages {
-        stage ('Read POM file') {
-            agent any
-            steps {
-                script {
-                    echo 'Read pom file'
-                    pom = readMavenPom file: "$POM_XML_FILE"
-
-                    POM_XML_VERSION = "${pom.version}"
-                    ARTIFACT_ID = "${pom.artifactId}"
-                }
-            }
-        }
         stage ('Deploy') {
             agent any
             steps {
@@ -40,14 +28,17 @@ pipeline {
             }
             steps {
                 script {
+                    echo 'Read pom file'
+                    pom = readMavenPom file: "$POM_XML_FILE"
+                    POM_XML_VERSION = "${pom.version}"
+                    ARTIFACT_ID = "${pom.artifactId}"
+
                     sh name: 'Checkout Git master branch',
                     script: "git checkout -b ${BRANCH_DEFAULT} remotes/origin/${BRANCH_DEFAULT}"
 
                     sh name: 'Set remote origin url',
                     script: "git config remote.origin.url https://'${GITHUB_CREDENTIALS_USR}:${GITHUB_CREDENTIALS_PSW}'@github.com/${GITHUB_CREDENTIALS_USR}/${ARTIFACT_ID}.git"
 
-                    echo 'Read pom file'
-                    pom = readMavenPom file: "$POM_XML_FILE"
                     def version = pom.version.toString().split("\\.")
                     if(params.NOVA_VERSAO == true){
                         version[0] = version[0].toInteger()+1
