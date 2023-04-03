@@ -3,6 +3,7 @@ pipeline {
     environment {
         APACHE_PATH = '/var/www/html/php-support'
         BRANCH_DEFAULT = "master"
+        POM_XML_FILE = "pom.xml"
     }
     stages {
         stage ('Deploy') {
@@ -26,13 +27,13 @@ pipeline {
             }
             steps {
                 script {
-                    ARTIFACT_ID = "${pom.artifactId}"
+                    def artifactId = "${pom.artifactId}"
 
                     sh name: 'Checkout Git master branch',
                     script: "git checkout -b ${BRANCH_DEFAULT} remotes/origin/${BRANCH_DEFAULT}"
 
                     sh name: 'Set remote origin url',
-                    script: "git config remote.origin.url https://'${GITHUB_CREDENTIALS_USR}:${GITHUB_CREDENTIALS_PSW}'@github.com/${GITHUB_CREDENTIALS_USR}/${ARTIFACT_ID}.git"
+                    script: "git config remote.origin.url https://'${GITHUB_CREDENTIALS_USR}:${GITHUB_CREDENTIALS_PSW}'@github.com/${GITHUB_CREDENTIALS_USR}/${artifactId}.git"
 
                     echo 'Read pom file'
                     pom = readMavenPom file: "$POM_XML_FILE"
