@@ -27,9 +27,9 @@ pipeline {
             }
             steps {
                 script {
-                    def artifactId = "${pom.artifactId}"
                     echo 'Read pom file'
                     pom = readMavenPom file: "$POM_XML_FILE"
+                    def artifactId = pom.artifactId
                     def version = pom.version.toString().split("\\.")
                     version[0] = version[0].toInteger()+1
                     version[1] = 0
