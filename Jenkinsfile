@@ -28,13 +28,6 @@ pipeline {
             steps {
                 script {
                     def artifactId = "${pom.artifactId}"
-
-                    sh name: 'Checkout Git master branch',
-                    script: "git checkout -b ${BRANCH_DEFAULT} remotes/origin/${BRANCH_DEFAULT}"
-
-                    sh name: 'Set remote origin url',
-                    script: "git config remote.origin.url https://'${GITHUB_CREDENTIALS_USR}:${GITHUB_CREDENTIALS_PSW}'@github.com/${GITHUB_CREDENTIALS_USR}/${artifactId}.git"
-
                     echo 'Read pom file'
                     pom = readMavenPom file: "$POM_XML_FILE"
                     def version = pom.version.toString().split("\\.")
@@ -46,6 +39,12 @@ pipeline {
                     writeMavenPom model: pom, file: "${POM_XML_FILE}", name: 'Write Maven POM file'
                     POM_XML_VERSION = "${pom.version}"
                     echo "Incremented POM project version to ${POM_XML_VERSION}"
+
+                    sh name: 'Checkout Git master branch',
+                    script: "git checkout -b ${BRANCH_DEFAULT} remotes/origin/${BRANCH_DEFAULT}"
+
+                    sh name: 'Set remote origin url',
+                    script: "git config remote.origin.url https://'${GITHUB_CREDENTIALS_USR}:${GITHUB_CREDENTIALS_PSW}'@github.com/${GITHUB_CREDENTIALS_USR}/${artifactId}.git"
 
                     sh name: "Create local Git tag for ${POM_XML_VERSION}",
                     script: "git tag -a '${POM_XML_VERSION}' -m \"tag ${POM_XML_VERSION} gerada\""
