@@ -40,13 +40,10 @@ pipeline {
                     script: "git config remote.origin.url https://'${GITHUB_CREDENTIALS_USR}:${GITHUB_CREDENTIALS_PSW}'@github.com/${GITHUB_CREDENTIALS_USR}/${ARTIFACT_ID}.git"
 
                     def version = pom.version.toString().split("\\.")
-                    if(params.NOVA_VERSAO == true){
-                        version[0] = version[0].toInteger()+1
-                        version[1] = 0
-                        version[2] = 0
-                    } else {
-                        version[2] = version[2].toInteger()+1
-                    }
+                    version[0] = version[0].toInteger()+1
+                    version[1] = 0
+                    version[2] = 0
+
                     pom.version = version.join('.')
                     writeMavenPom model: pom, file: "${POM_XML_FILE}", name: 'Write Maven POM file'
                     POM_XML_VERSION = "${pom.version}"
