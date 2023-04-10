@@ -53,9 +53,10 @@
                 <th class="text-center">#</th>
                 <th class="text-center">Endpoint</th>
                 <th class="text-center">Value</th>
+                <th class="text-center">Service Key</th>
                 <th class="text-center">Description</th>
                 <th class="text-center">Exception Type</th>
-                <th class="text-center">Service Key</th>
+                <th class="text-center">Error Payload</th>
                 </thead>
                 <tbody></tbody>
             </table>

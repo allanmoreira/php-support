@@ -10,8 +10,8 @@ btn_consultar.click(function(){
 
 function consultar(){
     $('#tabela tbody > tr').remove();
-    consultarEndpoint('caso1', 'POR - Sem permissão de acesso.');
-    consultarEndpoint('caso2', 'KC - Resolveremos em breve :)');
+    // consultarEndpoint('caso1', 'POR - Sem permissão de acesso.');
+    // consultarEndpoint('caso2', 'KC - Resolveremos em breve :)');
     consultarEndpoint('mgm', 'MGM - Resolveremos em breve :)');
 }
 
@@ -23,7 +23,7 @@ function consultarEndpoint(endpoint, msg_esperada){
         dataType: 'json',
         data: null,
         success: function (response) {
-            preencheTabela(endpoint, msg_esperada, response.status);
+            preencheTabela(endpoint, msg_esperada, response);
         },
         error: function (response) {
             if(response.status === 401){
@@ -35,7 +35,8 @@ function consultarEndpoint(endpoint, msg_esperada){
     });
 }
 
-function preencheTabela(endpoint,msg_esperada, response_status){
+function preencheTabela(endpoint,msg_esperada, response){
+    var response_status = response.status;
     var cor_sucesso = '#56ee71';
     var cor_falha = '#ff4949';
     let sucesso = response_status.description === msg_esperada;
@@ -46,13 +47,14 @@ function preencheTabela(endpoint,msg_esperada, response_status){
             '<td class="text-center" style="background: ' + cor + '"><span class="'+icone+'"></span></td>' +
             '<td class="text-center">' + endpoint + '</td>' +
             '<td class="text-center">' + response_status.value + '</td>' +
+            '<td class="text-center">' + response_status.service.owner.key + '</td>' +
             '<td class="text-center">' + response_status.description + '</td>' +
             '<td class="text-center">' + (isEmpty(response_status.exception) ? '' : response_status.exception.type) + '</td>' +
-            '<td class="text-center">' + response_status.service.owner.key + '</td>' +
+            '<td class="text-center">' + (isEmpty(response.error) ? '' : JSON.stringify(response.error, null, 2)) + '</td>' +
         '</tr>'
     );
 }
 
 function isEmpty(data){
-    return data == '' || data === null  || data === undefined;
+    return data === '' || data === null  || data === undefined;
 }
