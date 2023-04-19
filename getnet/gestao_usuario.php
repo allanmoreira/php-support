@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.php">Gestão Usuários</a>
+                    <a class="navbar-brand" href="../index">Gestão Usuários</a>
                 </div>
             </div>
         </nav>

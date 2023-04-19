@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.php">Rate Limit</a>
+                    <a class="navbar-brand" href="../index">Rate Limit</a>
                 </div>
             </div>
         </nav>

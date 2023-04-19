@@ -37,30 +37,30 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">PHP Support</a>
+                <a class="navbar-brand" href="index">PHP Support</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="artifactory.php">Artifactory</a></li>
-                    <li><a href="arquivos.php?tipo=backups&projeto=planilha_financeira">Backups</a></li>
+                    <li><a href="artifactory">Artifactory</a></li>
+                    <li><a href="arquivos?tipo=backups&projeto=planilha_financeira">Backups</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Builds<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="arquivos.php?tipo=builds&projeto=planilha-financeira-web">Planilha Financeira WEB</a></li>
-                            <li><a href="arquivos.php?tipo=builds&projeto=planilha-financeira-ms">Planilha Financeira MS</a></li>
+                            <li><a href="arquivos?tipo=builds&projeto=planilha-financeira-web">Planilha Financeira WEB</a></li>
+                            <li><a href="arquivos?tipo=builds&projeto=planilha-financeira-ms">Planilha Financeira MS</a></li>
                         </ul>
                     </li>
-                    <li><a href="upload.php">Upload</a></li>
-                    <li><a href="despesas_maccari.php">Despesas Maccari</a></li>
+                    <li><a href="upload">Upload</a></li>
+                    <li><a href="despesas_maccari">Despesas Maccari</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Planilha Financeira<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="projecao_contas.php">Projeção Contas</a></li>
-                            <li><a href="emprestimo.php">Empréstimo</a></li>
+                            <li><a href="projecao_contas">Projeção Contas</a></li>
+                            <li><a href="emprestimo">Empréstimo</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -68,13 +68,13 @@
                             Getnet<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="getnet/logs.php">Logs</a></li>
-                            <li><a href="getnet/calculadora_vendas.php">Calculadora Vendas</a></li>
-                            <li><a href="getnet/extrato_servicos.php">Extrato Serviços</a></li>
-                            <li><a href="getnet/rate_limit.php">Rate Limit</a></li>
-                            <li><a href="getnet/gestao_usuario.php">Gestão Usuário</a></li>
-                            <li><a href="getnet/parametros.php">Parâmetros</a></li>
-                            <li><a href="getnet/tratamento_erros.php">Tratamento Erros</a></li>
+                            <li><a href="getnet/logs">Logs</a></li>
+                            <li><a href="getnet/calculadora_vendas">Calculadora Vendas</a></li>
+                            <li><a href="getnet/extrato_servicos">Extrato Serviços</a></li>
+                            <li><a href="getnet/rate_limit">Rate Limit</a></li>
+                            <li><a href="getnet/gestao_usuario">Gestão Usuário</a></li>
+                            <li><a href="getnet/parametros">Parâmetros</a></li>
+                            <li><a href="getnet/tratamento_erros">Tratamento Erros</a></li>
                         </ul>
                     </li>
 

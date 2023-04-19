@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.php">Parâmetros</a>
+                    <a class="navbar-brand" href="../index">Parâmetros</a>
                 </div>
             </div>
         </nav>

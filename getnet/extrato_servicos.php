@@ -29,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.php">Extrato Serviços</a>
+                    <a class="navbar-brand" href="../index">Extrato Serviços</a>
                 </div>
             </div>
         </nav>

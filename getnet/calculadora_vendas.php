@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.php">Calculadora Vendas</a>
+                    <a class="navbar-brand" href="../index">Calculadora Vendas</a>
                 </div>
             </div>
         </nav>
