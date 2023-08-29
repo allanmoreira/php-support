@@ -14,7 +14,7 @@ var description = $('#description');
 var value = $('#value');
 
 $(function(){
-    getConfigs();
+    getConfigs(CONSTANTS.REALM.ATENDIMENTO);
     itens_pagina.val('50');
     consulta();
     consultaTypes();

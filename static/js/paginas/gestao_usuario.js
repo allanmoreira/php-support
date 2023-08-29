@@ -19,7 +19,7 @@ var email_south = 'allan.moreira@southsystem.com.br';
 var email_gmail = 'allanfelipe.moreira@gmail.com';
 
 $(function(){
-    getConfigs();
+    getConfigs(CONSTANTS.REALM.ATENDIMENTO);
     novo_email.css('background-color', cor_email_gmail);
     usuario.val('02111023000');
 });

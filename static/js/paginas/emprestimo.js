@@ -54,7 +54,7 @@ var json_comparativos = {
 }
 
 $(function(){
-    getConfigs();
+    getConfigs(CONSTANTS.REALM.AUTH);
     consulta();
 });
 

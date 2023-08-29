@@ -6,7 +6,7 @@ var ec = $('#ec');
 var tabela = $('#tabela');
 
 $(function(){
-    getConfigs();
+    getConfigs(CONSTANTS.REALM.AUTH);
     valor.maskMoney();
     ec.val('51161828');
     cartao.val('154');

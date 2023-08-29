@@ -5,7 +5,7 @@ var ec = $('#ec');
 var tabela_detalhes_tbody = $('#tabela_detalhes tbody');
 
 $(function(){
-    getConfigs();
+    getConfigs(CONSTANTS.REALM.AUTH);
     // data_inicio.val('2019-01-01T00:00:00.000-0300');
     // data_fim.val('2020-09-01T00:00:00.000-0300');
 

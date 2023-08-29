@@ -22,7 +22,7 @@ var minDate;
 var maxDate;
 
 $(function(){
-    getConfigs();
+    getConfigs(CONSTANTS.REALM.ATENDIMENTO);
     //ec.val('281534');
     periodo.val('15');
     itens_pagina.val('50');

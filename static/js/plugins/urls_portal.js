@@ -1,79 +1,55 @@
-var tipo_token = $('#tipo_token');
 var ambiente = $('#ambiente');
 var realm = $('#realm');
 
 var LOCAL_STORAGE_AMBIENTE = 'AMBIENTE';
-var LOCAL_STORAGE_AMBIENTE_TOKEN = 'AMBIENTE_TOKEN';
-var LOCAL_STORAGE_AUTH = 'AUTH';
+var LOCAL_STORAGE_REALM = 'REALM';
 var TOKEN;
 
-function getConfigs(){
-    setRealm();
+function getConfigs(realm){
     setAmbiente();
-    setTipoToken();
+    setRealm(realm);
 }
-
-realm.change(function(){
-    localStorage.setItem(LOCAL_STORAGE_AUTH, this.value);
-});
 
 ambiente.change(function(){
     localStorage.setItem(LOCAL_STORAGE_AMBIENTE, this.value);
 });
 
-tipo_token.change(function(){
-    localStorage.setItem(LOCAL_STORAGE_AMBIENTE_TOKEN, this.value);
+realm.change(function(){
+    localStorage.setItem(LOCAL_STORAGE_REALM, this.value);
 });
-
-function setRealm(){
-    realm.val(localStorage.getItem(LOCAL_STORAGE_AUTH));
-}
 
 function setAmbiente(){
     ambiente.val(localStorage.getItem(LOCAL_STORAGE_AMBIENTE));
-}
-
-function setTipoToken(){
-    tipo_token.val(localStorage.getItem(LOCAL_STORAGE_AMBIENTE_TOKEN));
-}
-
-function getRealm(){
-    return realm.val();
 }
 
 function getAmbiente(){
     return ambiente.val();
 }
 
-function getTipoToken(){
-    return tipo_token.val();
+function setRealm(realm){
+    realm.val(realm);
+    localStorage.setItem(LOCAL_STORAGE_REALM, realm);
 }
 
-var KEYCLOAK_HML = 'https://getsso-hom.getnet.com.br';
+function getRealm(){
+    return realm.val();
+}
 
-var REALM = {
-    AUTH: 'external',
-    ATENDIMENTO: 'getnet',
-    INTERNO: 'getnet'
-};
-
-var HOST = {
-    HTI: 'https://servicosportais-hti.getnet.com.br',
-    HK: 'https://servicosportais-hk.getnet.com.br',
-    PROD: 'https://servicosportais.getnet.com.br'
-};
-
-var KEYCLOAK = {
-    HTI: {
-        NEW: KEYCLOAK_HML,
-        OLD: HOST.HTI
+var CONSTANTS = {
+    REALM : {
+        AUTH: 'external',
+        ATENDIMENTO: 'getnet',
+        INTERNO: 'getnet'
     },
-    HK: {
-        NEW: KEYCLOAK_HML,
-        OLD: HOST.HK
+    HOST : {
+        HTI: 'https://servicosportais-hti.getnet.com.br',
+        PROD: 'https://servicosportais.getnet.com.br'
     },
-    PROD: 'https://getsso.getnet.com.br'
-};
+    KEYCLOAK : {
+        HTI: 'https://getsso-hom.getnet.com.br',
+        PROD: 'https://getsso.getnet.com.br'
+    }
+}
 
 var SERVICO  = {
     ANALISE_MERCADO : {
@@ -121,21 +97,16 @@ var SERVICO  = {
 function getUrlKeycloak(){
     var url;
     var ambiente = getAmbiente();
-    var tipo = getTipoToken();
-    var realm = getRealm();
-    if(ambiente === 'PROD'){
-        url = KEYCLOAK.PROD;
-    } else {
-        if(ambiente === 'LOCAL')
-            ambiente = 'HTI';
-        url = KEYCLOAK[ambiente][tipo];
-    }
-    return url + '/auth/realms/' + REALM[realm] + '/protocol/openid-connect/token'
+    if(ambiente === 'PROD')
+        url = CONSTANTS.KEYCLOAK.PROD;
+    else
+        url = CONSTANTS.KEYCLOAK.HTI;
+    return url + '/auth/realms/' + getRealm() + '/protocol/openid-connect/token'
 }
 
 function getUrlBaseServico(servico){
     var ambiente = getAmbiente();
     if(ambiente === 'LOCAL')
         return servico.LOCAL;
-    return HOST[ambiente] + '/' + servico.OUTROS;
+    return CONSTANTS.HOST[ambiente] + '/' + servico.OUTROS;
 }

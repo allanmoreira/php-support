@@ -4,7 +4,7 @@ var cor_sucesso = '#56ee71';
 var cor_falha = '#ff4949';
 
 $(function(){
-    getConfigs();
+    getConfigs(CONSTANTS.REALM.AUTH);
     consulta();
 });
 
