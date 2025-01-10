@@ -48,6 +48,10 @@ pipeline {
                     sh "rm .htaccess || true"
                     sh "mkdir ${APACHE_PATH}  || true"
                     sh "rm -r ${APACHE_PATH}/* || true"
+                    sh 'pwd'
+                    sh 'ls -la'
+                    sh "ls -la /var/www/html/php-support"
+                    sh "ls -la /var/www/html"
                     sh "cp -r . ${APACHE_PATH}/"
                 }
             }
