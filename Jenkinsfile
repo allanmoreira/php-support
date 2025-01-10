@@ -18,19 +18,13 @@ pipeline {
                     ARTIFACT_ID = "${pom.artifactId}"
 
                     def version = VERSION_OLD.split("\\.")
-                    if(params.NOVA_VERSAO == true){
-                        version[0] = version[0].toInteger()+1
-                        version[1] = 0
-                        version[2] = 0
+                    version[0] = version[0].toInteger()+1
+//                     version[1] = 0
+//                     version[2] = 0
 
-                        VERSION_BUILD = version.join('.')
-                        version[2] = 1
-                        VERSION_SNAPSHOT = version.join('.')
-                    } else {
-                        VERSION_BUILD = VERSION_OLD
-                        version[2] = version[2].toInteger()+1
-                        VERSION_SNAPSHOT = version.join('.')
-                    }
+                    VERSION_BUILD = version.join('.')
+                    version[2] = 1
+                    VERSION_SNAPSHOT = version.join('.')
 
                     pom.version = VERSION_BUILD
                     writeMavenPom model: pom, file: "${POM_XML_FILE}"
