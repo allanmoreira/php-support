@@ -3,14 +3,8 @@ var btn_executar = $('#btn_executar');
 
 var LOCAL_STORAGE_TOKEN = 'TOKEN';
 
-var LOGIN_REDE = 'am23000';
-var SENHA_REDE = 'macaquinho.3';
-var LOGIN = '04493259035';
-var SENHA = 'getnet@123';
-// var LOGIN = '02111023000';
-// var SENHA = 'getnet@123';
-// var LOGIN = 'am23000';
-// var SENHA = 'macaquinho.3';
+var LOGIN_REDE = '';
+var SENHA_REDE = '';
 
 btn_atualizar_token.click(function(){
     gerarToken();
